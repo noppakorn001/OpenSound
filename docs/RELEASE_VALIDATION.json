@@ -221,5 +221,22 @@
     "local_pre_push_guard": "enabled in maintainer checkout",
     "ci_guard": "configured with full Git history",
     "limits": "heuristic scan; not a guarantee or an independent audit"
+  },
+  "installer_validation": {
+    "format": "UDZO DMG, HFS+",
+    "filename": "OpenSound-0.4.0-macos-arm64.dmg",
+    "image_checksum": "passed",
+    "sha256_sidecar": "generated",
+    "mounted_app_signature": "passed; ad-hoc hardened runtime",
+    "copied_app_signature": "passed after copying to an isolated validation folder",
+    "finder_double_click": "passed; app left, Applications right, no sidebar",
+    "content_allowlist": [
+      "OpenSound.app",
+      "Applications symlink",
+      ".DS_Store fixed layout"
+    ],
+    "artifact_privacy_guard": "passed",
+    "signing_limit": "No Developer ID identity or notarization configured",
+    "installed_to_system_applications": false
   }
 }

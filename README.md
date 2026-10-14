@@ -26,6 +26,8 @@ The Menu Bar headphone icon keeps quick battery, ANC/EQ, connection, reconnect p
 
 ## Run
 
+Download the `.dmg` from [GitHub Releases](https://github.com/noppakorn001/OpenSound/releases), open it and drag **OpenSound** to **Applications**. See the [installation guide](docs/INSTALLATION.md), including the current ad-hoc signing and notarization limitations.
+
 Open `dist/OpenSound.app`. Pair your headphones in macOS System Settings → Bluetooth, then choose Connect. The More menu selects a paired device or refreshes devices. Allow Bluetooth access if macOS requests it.
 
 The headphone icon in the macOS Menu Bar provides battery status, connection actions, ANC modes, EQ presets and **Show OpenSound**. The same shortcuts are available in the app's **Controls** menu. Closing the main window keeps the app running; choose **Quit OpenSound** from the Menu Bar to stop it and release the control session. No start-at-login item is installed.
@@ -46,6 +48,7 @@ Requires Apple Silicon, macOS 14 or later, and Xcode with the Swift / C++ toolch
 python3 tests/FeatureCatalogTests.py
 bash scripts/security-test.sh
 python3 scripts/check-public-privacy.py
+bash scripts/package-dmg.sh
 ```
 
 The build uses local ad-hoc signing. Neither Node, Java, Ghidra, PlayCover, the IPA, nor a paid developer account is needed to build or run. The included ICNS icon is ready to build; `scripts/build-icon.sh` regenerates it from the original PNG using macOS tools.

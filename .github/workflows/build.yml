@@ -22,7 +22,12 @@ jobs:
         run: bash scripts/build.sh
       - name: Archive app with executable permissions
         run: ditto -c -k --sequesterRsrc --keepParent dist/OpenSound.app dist/OpenSound-macos-arm64.zip
+      - name: Build and verify drag-to-Applications installer
+        run: bash scripts/package-dmg.sh
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: OpenSound-macos-arm64
-          path: dist/OpenSound-macos-arm64.zip
+          path: |
+            dist/OpenSound-macos-arm64.zip
+            dist/OpenSound-*-macos-arm64.dmg
+            dist/OpenSound-*-macos-arm64.dmg.sha256

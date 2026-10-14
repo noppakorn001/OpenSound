@@ -2,6 +2,7 @@
 
 ## 0.4.0
 
+- Package a verified drag-to-Applications DMG with a fixed Finder layout, SHA-256 checksum and installation guide.
 - Automatically reconnect to the previously selected headset with bounded retry backoff.
 - Pause retries while the Mac sleeps and resume discovery after wake.
 - Respect manual Disconnect and the Automatically Reconnect preference.

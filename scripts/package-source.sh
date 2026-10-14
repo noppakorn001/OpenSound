@@ -11,6 +11,7 @@ cp -R Resources docs "$task_package/"
 cp README.md CONTRIBUTING.md SECURITY.md CHANGELOG.md LICENSE LICENSE.SonyBridge LICENSE.SonyHeadphonesClient THIRD_PARTY_NOTICES.md "$task_package/"
 cp tests/ProtocolTests.cpp tests/FeatureCatalogTests.py tests/SecurityTests.cpp tests/DiagnosticLogTests.mm tests/ReconnectPolicyTests.swift "$task_package/tests/"
 cp scripts/build.sh scripts/build-icon.sh scripts/test.sh scripts/security-test.sh scripts/package-source.sh scripts/hardware-test.sh scripts/settings-hardware-test.sh scripts/generate-feature-catalog.py scripts/check-public-privacy.py "$task_package/scripts/"
+cp scripts/package-dmg.sh scripts/create-finder-layout.py "$task_package/scripts/"
 if [[ -d .github ]]; then cp -R .github "$task_package/"; fi
 if [[ -d .githooks ]]; then cp -R .githooks "$task_package/"; fi
 printf '/build/\n/dist/\n/analysis/\n*.ipa\n.DS_Store\n' > "$task_package/.gitignore"
