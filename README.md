@@ -24,6 +24,8 @@ Real screenshots from OpenSound connected to a WF-1000XM4. Battery values and av
 
 The Menu Bar headphone icon keeps quick battery, ANC/EQ, connection, reconnect preference and window controls available while the main window is closed. See the [interface guide](docs/INTERFACE.md) for each section.
 
+**Left/right actions:** In System → Button and touch controls, choose both actions and click **Apply touch controls**. OpenSound verifies the whole pair. On the tested WF-1000XM4 configuration, keep Playback control on one side; selecting Left Playback allows Right Ambient, Volume or No function. See the [paired editor guide](docs/INTERFACE.md#button-and-touch-controls).
+
 ## Run
 
 Download the `.dmg` from [GitHub Releases](https://github.com/noppakorn001/OpenSound/releases), open it and drag **OpenSound** to **Applications**. See the [installation guide](docs/INSTALLATION.md), including the current ad-hoc signing and notarization limitations.

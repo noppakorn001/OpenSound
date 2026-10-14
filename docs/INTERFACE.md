@@ -16,9 +16,17 @@ Automatically Reconnect resumes a control connection after a loss or Mac wake. T
 
 Additional sections appear according to capabilities: Audio, Connections, Controls, Device, Playback, Power and System. Paired-device names are hidden until Show device names is expanded. Some settings can be temporarily unavailable because of audio/call state or a device restriction.
 
+### Button and touch controls
+
+![Paired touch editor](images/touch-controls.png)
+
+Select left and right actions, then choose **Apply touch controls**. Picker edits remain pending until Apply. The backend sends one complete list, reads both sides back and reports success only for an exact match. Cancel discards pending edits. Availability is read for each key; rejected combinations restore the previous pair when the session is still available.
+
+On the tested WF-1000XM4 firmware 2.3.1 with System voice assistant selected, moving the only Playback assignment to another action was rejected. To use Ambient, Volume or No function on the right, set **Left: Playback control** and choose the right action, then Apply. The inverse combinations also passed. Other configurations may differ; no voice-assistant setting is changed automatically.
+
 ![Device controls](images/system-controls.png)
 
-The screenshot shows advertised controls, not a guarantee that every write works. Right-touch reassignment and the tested multipoint changes remain subject to the limits in [feature coverage](FEATURE_COVERAGE.md).
+The older overview screenshot shows advertised controls, not a guarantee that every write works. The paired touch editor above is new in 0.4.1. Multipoint and other limits are documented in [feature coverage](FEATURE_COVERAGE.md).
 
 ## Status
 

@@ -53,6 +53,9 @@ final class HeadphoneModel: ObservableObject {
     @Published var draftBands = [0.0, 0.0, 0.0, 0.0, 0.0]
     @Published var draftBass = 0.0
     @Published var dirty = false
+    @Published var touchDraft: [String: Int] = [:]
+    @Published var touchMessage = ""
+    @Published var touchFailed = false
     @Published var scanning = false
     @Published private(set) var autoReconnect = true
     @Published private(set) var reconnecting = false
@@ -76,7 +79,14 @@ final class HeadphoneModel: ObservableObject {
     var deviceName: String { connected ? state["name"] as? String ?? "Sony headphones" : devices.first(where: { $0.id == selectedAddress })?.name ?? "OpenSound" }
     var isEarbuds: Bool { deviceName.hasPrefix("WF-") || deviceName.contains("LinkBuds") }
     var settings: [HeadphoneSetting] { (state["settings"] as? [[String: Any]] ?? []).compactMap(HeadphoneSetting.init) }
-    var settingSections: [String] { Array(Set(settings.map(\.section))).sorted() }
+    var touchSettings: [HeadphoneSetting] { settings.filter { $0.id.hasPrefix("assignment") }.sorted { $0.id < $1.id } }
+    var touchDirty: Bool {
+        touchSettings.contains { setting in
+            guard let draft = touchDraft[setting.id] else { return false }
+            return draft != setting.value
+        }
+    }
+    var settingSections: [String] { Array(Set(settings.filter { !$0.id.hasPrefix("assignment") }.map(\.section))).sorted() }
     var productImageURL: URL? {
         guard let images = Bundle.main.urls(forResourcesWithExtension: "png", subdirectory: "Devices") else { return nil }
         let reportedModel = settings.first(where: { $0.id == "modelName" })?.displayValue ?? ""
@@ -186,6 +196,7 @@ final class HeadphoneModel: ObservableObject {
             }
             if let error { self.message = error; self.failed = true }
             else if announce { self.message = self.connected ? "Updated on your headphones." : "Disconnected."; self.failed = false }
+            if !self.connected { self.touchDraft.removeAll(); self.touchMessage = "" }
             if self.sleeping { self.state = [:]; self.retryPolicy.sleep(); return }
             if self.connected {
                 self.retryPolicy.succeeded(self.selectedAddress)
@@ -217,6 +228,20 @@ final class HeadphoneModel: ObservableObject {
     }
     func setSetting(_ setting: HeadphoneSetting, value: Int) {
         perform("Applying \(setting.title.lowercased())…") { bridge.setSetting(setting.id, value: NSNumber(value: value), completion: $0) }
+    }
+    func applyTouchControls() {
+        let requested = touchDraft.mapValues { NSNumber(value: $0) }
+        touchMessage = "Applying touch controls…"; touchFailed = false
+        perform("Applying button and touch controls…") { completion in
+            bridge.setTouchAssignments(requested) { [weak self] snapshot, error in
+                MainActor.assumeIsolated {
+                    if error == nil { self?.touchDraft.removeAll() }
+                    self?.touchMessage = error ?? "Touch controls confirmed on your headphones."
+                    self?.touchFailed = error != nil
+                }
+                completion(snapshot, error)
+            }
+        }
     }
     func applyEQ() {
         let bass = Int(draftBass.rounded())
@@ -343,10 +368,41 @@ struct PhoneView: View {
                             } else if model.settings.isEmpty {
                                 Text("No additional controls are available for this protocol profile.").font(.system(size: 12)).foregroundStyle(.secondary)
                             }
+                            if !model.touchSettings.isEmpty {
+                                VStack(alignment: .leading, spacing: 15) {
+                                    Text("Button and touch controls").font(.system(size: 17, weight: .semibold))
+                                    ForEach(model.touchSettings) { setting in
+                                        if let value = setting.value {
+                                            Picker(setting.title, selection: Binding(get: { model.touchDraft[setting.id] ?? value }, set: { model.touchDraft[setting.id] = $0; model.touchMessage = "" })) {
+                                                ForEach(setting.options) { option in Text(option.label).tag(option.id) }
+                                            }.disabled(model.busy || !model.connected || !setting.enabled)
+                                            if let pending = model.touchDraft[setting.id], pending != value {
+                                                Text("Current: \(setting.displayValue)").font(.system(size: 10)).foregroundStyle(.secondary)
+                                            }
+                                            if !setting.enabled { Text(setting.reason).font(.system(size: 10)).foregroundStyle(.secondary) }
+                                        } else {
+                                            LabeledContent(setting.title, value: "Unavailable")
+                                            Text(setting.reason).font(.system(size: 10)).foregroundStyle(.secondary)
+                                        }
+                                    }
+                                    Text("Choose both sides, then apply together. Some headphones reject combinations without Playback control.")
+                                        .font(.system(size: 11)).foregroundStyle(.secondary).fixedSize(horizontal: false, vertical: true)
+                                    HStack {
+                                        Button("Cancel") { model.touchDraft.removeAll(); model.touchMessage = "" }.disabled(!model.touchDirty || model.busy)
+                                        Spacer()
+                                        Button("Apply touch controls") { model.applyTouchControls() }
+                                            .buttonStyle(.borderedProminent).tint(accent).foregroundStyle(.black)
+                                            .disabled(!model.touchDirty || model.busy || !model.connected)
+                                    }.font(.system(size: 12))
+                                    if !model.touchMessage.isEmpty {
+                                        Text(model.touchMessage).font(.system(size: 11)).foregroundStyle(model.touchFailed ? Color.orange : accent).fixedSize(horizontal: false, vertical: true)
+                                    }
+                                }.padding(16).background(cardColor, in: RoundedRectangle(cornerRadius: 7))
+                            }
                             ForEach(model.settingSections, id: \.self) { section in
                                 VStack(alignment: .leading, spacing: 15) {
                                     Text(section).font(.system(size: 17, weight: .semibold))
-                                    ForEach(model.settings.filter { $0.section == section }) { setting in
+                                    ForEach(model.settings.filter { $0.section == section && !$0.id.hasPrefix("assignment") }) { setting in
                                         settingRow(setting)
                                     }
                                 }.padding(16).background(cardColor, in: RoundedRectangle(cornerRadius: 7))

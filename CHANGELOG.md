@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.4.1
+
+- Edit left/right button and touch actions together, then apply one complete preset list.
+- Confirm both returned values, check per-key availability and preserve unselected keys.
+- Restore the previous pair after a rejected or partially confirmed transaction; explain rejected combinations without Playback control.
+- Show pending values, current device values and apply results in the control card.
+- Verify six basic preset combinations on WF-1000XM4 firmware 2.3.1, including right Ambient, Volume and No function, with original settings restored.
+
 ## 0.4.0
 
 - Package a verified drag-to-Applications DMG with a fixed Finder layout, SHA-256 checksum and installation guide.

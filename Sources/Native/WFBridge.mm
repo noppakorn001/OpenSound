@@ -24,6 +24,7 @@ static NSString *safeText(const std::string& value,NSString *fallback) {
     std::vector<uint8_t> _functions;
     std::vector<wf::AmbientRange> _ambientRanges;
     std::vector<wf::SettingSpec> _specs;
+    std::vector<wf::AssignmentKey> _assignmentKeys;
     NSMutableDictionary *_settingRows,*_settingReplies;
     BOOL _acceptingWork;
 }
@@ -146,13 +147,15 @@ static NSString *safeText(const std::string& value,NSString *fallback) {
                     }
                 } catch(const std::exception&) {}
             }
+            self->_assignmentKeys.clear();
             if(self->_v2 && has(0xf3)) {
                 try {
                     auto cap=[self->_transport request:wf::Bytes{0xf0,3} reply:0xf1 inquiry:3];
                     auto keys=wf::parseAssignmentCapabilities(cap);
                     if(keys) {
                         auto current=[self->_transport request:wf::Bytes{0xf6,3} reply:0xf7 inquiry:3];
-                        if(current.size()==3+keys->size() && current[2]==keys->size()) {
+                        if(wf::parseAssignmentValues(*keys,current)) {
+                            self->_assignmentKeys=*keys;
                             for(size_t index=0;index<keys->size();++index) {
                                 const auto& key=(*keys)[index];
                                 wf::SettingSpec assignment{"assignment"+std::to_string(index),key.key==0?"Left touch control":key.key==1?"Right touch control":"Headphone button control","Controls",0xf3,3,0xf6,0xf7,0xf8,current.size(),3+index,{},false,false};
@@ -183,6 +186,7 @@ static NSString *safeText(const std::string& value,NSString *fallback) {
                 }
             }
             [self loadSettings];
+            [self refreshAssignments];
         } catch(const std::exception& e) { error=@(e.what()); [self->_transport close]; }
         [self finish:completion error:error];
     }];
@@ -323,7 +327,9 @@ static NSString *safeText(const std::string& value,NSString *fallback) {
     }
 }
 - (void)refreshSettings {
+    [self refreshAssignments];
     for(const auto& spec:_specs) {
+        if(spec.id.rfind("assignment",0)==0) continue;
         NSString *identifier=@(spec.id.c_str());
         if(![_settingRows[identifier][@"enabled"] boolValue]) continue;
         NSMutableDictionary *row=[_settingRows[identifier] mutableCopy];
@@ -336,7 +342,101 @@ static NSString *safeText(const std::string& value,NSString *fallback) {
         _settingRows[identifier]=row;
     }
 }
+- (void)updateAssignmentRows:(const wf::Bytes&)reply availability:(const std::vector<bool>&)availability {
+    auto values=wf::parseAssignmentValues(_assignmentKeys,reply);
+    if(!values || availability.size()!=_assignmentKeys.size()) throw std::runtime_error("Unrecognized touch-control response.");
+    for(size_t i=0;i<_assignmentKeys.size();++i) {
+        NSString *identifier=[NSString stringWithFormat:@"assignment%lu",(unsigned long)i];
+        NSMutableDictionary *row=[_settingRows[identifier] mutableCopy];
+        if(!row) continue;
+        row[@"value"]=@((*values)[i]); row[@"enabled"]=@(bool(availability[i]));
+        row[@"reason"]=availability[i]?@"Read from headphones; apply the complete control combination.":@"This button is unavailable. Take both earbuds out of the case and reconnect.";
+        _settingRows[identifier]=row;
+    }
+}
+- (void)refreshAssignments {
+    if(_assignmentKeys.empty()) return;
+    try {
+        auto availability=wf::parseAssignmentAvailability(_assignmentKeys.size(),[_transport request:wf::Bytes{0xf2,3} reply:0xf3 inquiry:3]);
+        if(!availability) throw std::runtime_error("Unrecognized touch-control availability.");
+        auto reply=[_transport request:wf::Bytes{0xf6,3} reply:0xf7 inquiry:3];
+        [self updateAssignmentRows:reply availability:*availability];
+    } catch(const std::exception& e) {
+        for(size_t i=0;i<_assignmentKeys.size();++i) {
+            NSString *identifier=[NSString stringWithFormat:@"assignment%lu",(unsigned long)i];
+            NSMutableDictionary *row=[_settingRows[identifier] mutableCopy];
+            if(row) { row[@"value"]=NSNull.null;row[@"enabled"]=@NO;row[@"reason"]=@(e.what());_settingRows[identifier]=row; }
+        }
+    }
+}
+- (void)setTouchAssignments:(NSDictionary<NSString *,NSNumber *> *)values completion:(WFCompletion)completion {
+    NSDictionary *requested=[values copy];
+    [self enqueue:^{
+        NSString *error=nil;
+        wf::Bytes original; BOOL attempted=NO;
+        try {
+            if(!self->_transport.connected || self->_assignmentKeys.empty() || !requested.count) throw std::runtime_error("Touch controls are not available on the connected headphones.");
+            auto availability=wf::parseAssignmentAvailability(self->_assignmentKeys.size(),[self->_transport request:wf::Bytes{0xf2,3} reply:0xf3 inquiry:3]);
+            if(!availability) throw std::runtime_error("Unrecognized touch-control availability.");
+            original=[self->_transport request:wf::Bytes{0xf6,3} reply:0xf7 inquiry:3];
+            auto current=wf::parseAssignmentValues(self->_assignmentKeys,original);
+            if(!current) throw std::runtime_error("No valid current touch-control list.");
+            std::vector<std::optional<uint8_t>> changes(self->_assignmentKeys.size());
+            for(NSString *identifier in requested) {
+                bool found=false;
+                for(size_t i=0;i<changes.size();++i) if([identifier isEqual:[NSString stringWithFormat:@"assignment%lu",(unsigned long)i]]) {
+                    NSNumber *number=requested[identifier];
+                    if(![number isKindOfClass:NSNumber.class] || number.doubleValue!=number.intValue || number.intValue<0 || number.intValue>255) throw std::runtime_error("Invalid touch action.");
+                    if(!(*availability)[i] && number.intValue!=(*current)[i]) throw std::runtime_error("This button is unavailable. Take both earbuds out of the case and reconnect.");
+                    changes[i]=uint8_t(number.intValue);found=true;
+                }
+                if(!found) throw std::runtime_error("Unknown headphone button.");
+            }
+            auto command=wf::setAssignmentValues(self->_assignmentKeys,original,changes);
+            auto expected=command;expected[0]=0xf7;
+            if(expected==original) { [self updateAssignmentRows:original availability:*availability]; [self finish:completion error:nil]; return; }
+            attempted=YES;
+            [self->_transport request:command reply:-1 inquiry:-1];
+            wf::Bytes reply;
+            for(int attempt=0;attempt<8;++attempt) {
+                if(attempt) [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.15]];
+                reply=[self->_transport request:wf::Bytes{0xf6,3} reply:0xf7 inquiry:3];
+                [self updateAssignmentRows:reply availability:*availability];
+                if(reply==expected) break;
+            }
+            if(reply!=expected) {
+                if(std::find(expected.begin()+3,expected.end(),0x20)==expected.end())
+                    throw std::runtime_error("The headphones rejected this combination. Keep Playback control on one side and apply both sides together.");
+                throw std::runtime_error("The headphones did not confirm the complete touch-control combination.");
+            }
+        } catch(const std::exception& e) {
+            error=@(e.what());
+            // A rejected or partially applied list must not silently change the other side.
+            if(attempted && !original.empty() && self->_transport.connected) {
+                try {
+                    auto restore=original;restore[0]=0xf8;
+                    [self->_transport request:restore reply:-1 inquiry:-1];
+                    wf::Bytes reply;
+                    for(int attempt=0;attempt<8;++attempt) {
+                        if(attempt) [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.15]];
+                        reply=[self->_transport request:wf::Bytes{0xf6,3} reply:0xf7 inquiry:3];
+                        if(reply==original) break;
+                    }
+                    if(reply!=original) throw std::runtime_error("Previous touch-control combination could not be restored. Reconnect and review both sides.");
+                } catch(const std::exception& restoreError) { error=[NSString stringWithFormat:@"%@ %@",error,@(restoreError.what())]; }
+            } else if(attempted) {
+                error=[NSString stringWithFormat:@"%@ Reconnect and verify both controls; the previous pair could not be confirmed.",error];
+            }
+            [self refreshAssignments];
+        }
+        [self finish:completion error:error];
+    }];
+}
 - (void)setSetting:(NSString *)identifier value:(id)value completion:(WFCompletion)completion {
+    if([identifier hasPrefix:@"assignment"]) {
+        if(!value) value=NSNull.null;
+        [self setTouchAssignments:@{identifier:value} completion:completion]; return;
+    }
     [self enqueue:^{
         NSString *error=nil;
         try {

@@ -15,8 +15,7 @@ OpenSound implements a selected, typed subset of Sound Connect's headphone contr
 | Speak to Chat | Type 1/type 2 profile selection; enable, sensitivity and resume time; Type 1 voice focus | Type 1 enable, sensitivity, resume time and voice focus writes/readback/restoration passed; Type 2 untested |
 | Automatic power off | Advertised modes/timers; capability-filtered options | Write/readback and original-value restoration passed |
 | Headphone volume | Maximum value obtained from device capability | Write/readback and original-value restoration passed |
-| Left touch assignment | Nested capability parser; presets come from the key's advertised list | Write/readback and original-value restoration passed |
-| Right touch assignment | Current assignment and advertised choices read; requested changes require confirmation | Tested requests were not applied; app reported readback failure and original value remained intact |
+| Left/right touch assignment | Paired draft editor; one complete preset list, per-key availability, exact readback of both sides and rollback on rejection | Six combinations write/readback/restoration passed in 0.4.1; the test configuration rejects combinations without Playback control |
 | Voice guidance | Table 2 setting; preserves the existing language choice | On/off write/readback and original-value restoration passed |
 | Voice guidance volume | Typed Table 2 setting when supported | Implemented; not advertised by this tested unit |
 | Multipoint source switching | Typed Table 2 setting with device failure reason | Write/readback rejected in current audio/call state; original value retained |
@@ -26,7 +25,7 @@ OpenSound implements a selected, typed subset of Sound Connect's headphone contr
 | Head gestures, vibration and adaptive volume | Typed handlers selected by advertised capability | Implemented; no matching hardware validation |
 | Model, firmware version and active codec | Read-only device information; macOS negotiates the audio codec | Hardware reads verified |
 
-Nine additional setting changes passed confirmed readback and original-value restoration. One right-touch assignment test failed to apply; repeated alternate requests also left the original value unchanged. This limitation remains visible rather than being counted as a successful write. `RELEASE_VALIDATION.json` contains a sanitized test summary.
+Nine additional setting changes passed confirmed readback and original-value restoration. Earlier right-touch requests failed when they removed the only Playback assignment. In 0.4.1, migrating Playback to the other side in the same packet allowed right-side Ambient, Volume and No function. Six pairs and rejection preservation passed on one WF-1000XM4 firmware 2.3.1 unit with System voice assistant selected. This is observed device behavior, not a universal rule for every Sony model or assistant mode. `RELEASE_VALIDATION.json` retains historical failures and the current sanitized paired tests.
 
 These application handlers are separate from the generated protocol descriptors. A declared handler does not automatically enable a descriptor or establish compatibility with a different model.
 

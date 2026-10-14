@@ -19,6 +19,7 @@ int main() {
     require(!settingValue(general,{0xd7,0xd2,1,0})); // capability / parameter type mismatch
     std::mt19937 random(0x534f4e59);
     StreamDecoder decoder;
+    const std::vector<AssignmentKey> touchKeys={{0,0,0,{0,0x10,0x20,0xff}},{1,0,0x20,{0,0x10,0x20,0xff}}};
     const Bytes seeds[]={ {0x67,0x15,1,0,0,2,1,16}, {0x23,1,100,0,92,0},
         {0x57,0,0x11,6,18,9,11,10,13,15}, {0xf1,3,1,0,0,0,1,0,0,0},
         {0xd1,0xd2,0,0,1,'A',0}, {0x37,0,0,0xff} };
@@ -37,6 +38,8 @@ int main() {
         parseProtocolInfo(payload,ProtocolFamily::V1); parseProtocolInfo(payload,ProtocolFamily::V2);
         parseSupportFunctions(payload,ProtocolFamily::V1); parseSupportFunctions(payload,ProtocolFamily::V2);
         parseGeneralCapability(payload); parsePairedDevices(payload); parseAssignmentCapabilities(payload);
+        if(parseAssignmentValues(touchKeys,payload)) setAssignmentValues(touchKeys,payload,{0x20,0x10});
+        parseAssignmentAvailability(2,payload);
         auto frames=decoder.feed(payload);
         for(const auto& frame:frames) require(frame.payload.size()<=kMaxPayload);
         if(iteration%100==0) decoder.reset();

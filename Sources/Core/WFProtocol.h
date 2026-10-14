@@ -26,6 +26,10 @@ struct SettingSpec {
 std::optional<std::vector<uint8_t>> parseSupportFunctions(const std::vector<uint8_t>&, ProtocolFamily);
 struct AssignmentKey { uint8_t key, type, defaultPreset; std::vector<uint8_t> presets; };
 std::optional<std::vector<AssignmentKey>> parseAssignmentCapabilities(const std::vector<uint8_t>&);
+std::optional<std::vector<uint8_t>> parseAssignmentValues(const std::vector<AssignmentKey>&, const std::vector<uint8_t>&);
+std::optional<std::vector<bool>> parseAssignmentAvailability(size_t keyCount, const std::vector<uint8_t>&);
+std::vector<uint8_t> setAssignmentValues(const std::vector<AssignmentKey>&, const std::vector<uint8_t>& current,
+    const std::vector<std::optional<uint8_t>>& changes);
 struct PairedDevice { std::string address, name; uint8_t status; };
 std::optional<SettingSpec> parseGeneralCapability(const std::vector<uint8_t>&);
 std::optional<std::vector<PairedDevice>> parsePairedDevices(const std::vector<uint8_t>&);

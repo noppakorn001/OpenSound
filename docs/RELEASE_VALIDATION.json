@@ -1,10 +1,147 @@
 {
   "schema_version": 1,
-  "release": "OpenSound 0.4.0",
+  "release": "OpenSound 0.4.1",
   "device": "Sony WF-1000XM4",
   "firmware": "2.3.1",
   "scope": "One physical unit; protocol readback, not audio quality measurement",
-  "tests": [
+  "not_write_tested": [
+    "Headphone voice assistant"
+  ],
+  "privacy": "No Bluetooth addresses, paired-device names, paths, current settings values or raw traffic included.",
+  "offline_validation": {
+    "protocol_sanitizer_checks": 437,
+    "catalogue_tests": 8,
+    "public_package_optional_regeneration_test": "skipped when reference checkout is absent",
+    "public_package_build": "passed without IPA, vendor checkout, or private research files"
+  },
+  "core_bridge_regression": [
+    {
+      "step": "connect",
+      "status": "passed"
+    },
+    {
+      "step": "anc",
+      "status": "passed"
+    },
+    {
+      "step": "ambient",
+      "status": "passed"
+    },
+    {
+      "step": "off",
+      "status": "passed"
+    },
+    {
+      "step": "restore",
+      "status": "passed"
+    },
+    {
+      "step": "eq-off",
+      "status": "passed"
+    },
+    {
+      "step": "eq-manual",
+      "status": "passed"
+    },
+    {
+      "step": "eq-restore",
+      "status": "passed"
+    }
+  ],
+  "ui_validation": {
+    "english_interface": true,
+    "portrait_window": true,
+    "dsee_auto_and_restore_off": "passed with device readback",
+    "disconnect_clears_controls": "passed",
+    "cow_logo_matches_user_file": true,
+    "finder_launch": "passed",
+    "device_product_renders": 14,
+    "wf1000xm4_original_product_render": "Confirmed visually and byte-for-byte; cow icon retained"
+  },
+  "right_assignment_retry": {
+    "wearing_state": "User confirmed both earbuds worn",
+    "key_availability": "Both keys reported enabled",
+    "result": "No matching readback for right touch changes, including after temporarily assigning left Volume control",
+    "original_left_and_right_restored": true,
+    "cause": "Not established",
+    "release_0_4_retry": "Failed readback; original assignment restored",
+    "resolved_in_0_4_1": "Six atomic pairs confirmed; previous failures removed the only Playback assignment in the tested configuration."
+  },
+  "security_validation": {
+    "date": "2026-10-14",
+    "malformed_input_cases": 100000,
+    "diagnostic_file_privacy_and_bound_tests": "passed",
+    "clang_analyzer_diagnostics": 0,
+    "hardened_runtime": true,
+    "piE_arm64": true,
+    "no_third_party_runtime_dylibs": true,
+    "independent_audit": false,
+    "public_source_build_and_security_tests": "passed"
+  },
+  "menu_bar_validation": {
+    "main_window_close_app_remains_running": "passed; OpenSound remained isRunning=true after close",
+    "direct_status_item_click": "UI automation could not access SystemUIServer; not directly verified",
+    "quick_controls": "Shared Controls menu displayed live battery, ANC/EQ preset options and Connect action completed"
+  },
+  "connection_settings_tests": [
+    {
+      "status": "passed",
+      "reconnectError": null,
+      "id": "soundQuality",
+      "setError": null,
+      "restored": true,
+      "changedReadback": true,
+      "restoreError": null
+    },
+    {
+      "status": "passed",
+      "reconnectError": null,
+      "id": "autoOff",
+      "setError": null,
+      "restored": true,
+      "changedReadback": true,
+      "restoreError": null
+    },
+    {
+      "status": "failed",
+      "reconnectError": null,
+      "id": "general210",
+      "setError": "The headphones did not confirm the requested setting.",
+      "restored": true,
+      "changedReadback": false,
+      "restoreError": null
+    },
+    {
+      "status": "failed",
+      "reconnectError": null,
+      "id": "sourceSwitch",
+      "setError": "The headphones did not confirm the requested setting.",
+      "restored": true,
+      "changedReadback": false,
+      "restoreError": null
+    }
+  ],
+  "reconnect_validation": {
+    "pure_policy_regression": "passed; backoff, sleep/wake, duplicate retry prevention, disable and manual-disconnect behavior",
+    "physical_mac_sleep_wake": "not performed",
+    "live_session_recovery": "Not confirmed; final live retry could not open Bluetooth transport"
+  },
+  "multipoint_audio_retry": {
+    "status": "blocked before settings writes",
+    "reason": "macOS reported Bluetooth off or unavailable",
+    "settings_changed": false,
+    "source_switch_confirmed": false
+  },
+  "publication_privacy": {
+    "tracked_files_and_reachable_history": "passed",
+    "commit_email": "GitHub no-reply",
+    "png_text_and_exif": "none",
+    "screenshots": "visually reviewed; paired-device names collapsed",
+    "local_pre_push_guard": "enabled in maintainer checkout",
+    "ci_guard": "configured with full Git history",
+    "limits": "heuristic scan; not a guarantee or an independent audit"
+  },
+  "historical_single_setting_tests": [
     {
       "id": "dsee",
       "title": "DSEE",
@@ -86,143 +223,49 @@
       "limitation": null
     }
   ],
-  "not_write_tested": [
-    "Headphone voice assistant"
-  ],
-  "privacy": "No Bluetooth addresses, paired-device names, paths, current settings values or raw traffic included.",
-  "offline_validation": {
-    "protocol_sanitizer_checks": 423,
-    "catalogue_tests": 8,
-    "public_package_optional_regeneration_test": "skipped when reference checkout is absent",
-    "public_package_build": "passed without IPA, vendor checkout, or private research files"
+  "touch_controls_validation": {
+    "firmware": "2.3.1",
+    "assistant_mode": "System voice assistant",
+    "scope": "One WF-1000XM4 unit; complete preset-list readback, not physical tap/audio measurement",
+    "combinations": [
+      {
+        "left": "Playback",
+        "right": "Ambient sound",
+        "confirmed": true
+      },
+      {
+        "left": "Ambient sound",
+        "right": "Playback",
+        "confirmed": true
+      },
+      {
+        "left": "Playback",
+        "right": "Volume",
+        "confirmed": true
+      },
+      {
+        "left": "Volume",
+        "right": "Playback",
+        "confirmed": true
+      },
+      {
+        "left": "Playback",
+        "right": "No function",
+        "confirmed": true
+      },
+      {
+        "left": "No function",
+        "right": "Playback",
+        "confirmed": true
+      }
+    ],
+    "rejected_pair_preserves_previous": true,
+    "original_pair_restored": true,
+    "ui_apply_and_readback": "passed",
+    "ui_original_pair_restored": "passed",
+    "constraint": "The test configuration rejected combinations without Playback. Atomic migration to the other side succeeded. Other models, firmware and assistant modes remain unverified."
   },
-  "core_bridge_regression": [
-    {
-      "step": "connect",
-      "status": "passed"
-    },
-    {
-      "step": "anc",
-      "status": "passed"
-    },
-    {
-      "step": "ambient",
-      "status": "passed"
-    },
-    {
-      "step": "off",
-      "status": "passed"
-    },
-    {
-      "step": "restore",
-      "status": "passed"
-    },
-    {
-      "step": "eq-off",
-      "status": "passed"
-    },
-    {
-      "step": "eq-manual",
-      "status": "passed"
-    },
-    {
-      "step": "eq-restore",
-      "status": "passed"
-    }
-  ],
-  "ui_validation": {
-    "english_interface": true,
-    "portrait_window": true,
-    "dsee_auto_and_restore_off": "passed with device readback",
-    "disconnect_clears_controls": "passed",
-    "cow_logo_matches_user_file": true,
-    "finder_launch": "passed",
-    "device_product_renders": 14,
-    "wf1000xm4_original_product_render": "Confirmed visually and byte-for-byte; cow icon retained"
-  },
-  "right_assignment_retry": {
-    "wearing_state": "User confirmed both earbuds worn",
-    "key_availability": "Both keys reported enabled",
-    "result": "No matching readback for right touch changes, including after temporarily assigning left Volume control",
-    "original_left_and_right_restored": true,
-    "cause": "Not established",
-    "release_0_4_retry": "Failed readback; original assignment restored"
-  },
-  "security_validation": {
-    "date": "2026-10-14",
-    "malformed_input_cases": 100000,
-    "diagnostic_file_privacy_and_bound_tests": "passed",
-    "clang_analyzer_diagnostics": 0,
-    "hardened_runtime": true,
-    "piE_arm64": true,
-    "no_third_party_runtime_dylibs": true,
-    "independent_audit": false,
-    "public_source_build_and_security_tests": "passed"
-  },
-  "menu_bar_validation": {
-    "main_window_close_app_remains_running": "passed; OpenSound remained isRunning=true after close",
-    "direct_status_item_click": "UI automation could not access SystemUIServer; not directly verified",
-    "quick_controls": "Shared Controls menu displayed live battery, ANC/EQ preset options and Connect action completed"
-  },
-  "connection_settings_tests": [
-    {
-      "status": "passed",
-      "reconnectError": null,
-      "id": "soundQuality",
-      "setError": null,
-      "restored": true,
-      "changedReadback": true,
-      "restoreError": null
-    },
-    {
-      "status": "passed",
-      "reconnectError": null,
-      "id": "autoOff",
-      "setError": null,
-      "restored": true,
-      "changedReadback": true,
-      "restoreError": null
-    },
-    {
-      "status": "failed",
-      "reconnectError": null,
-      "id": "general210",
-      "setError": "The headphones did not confirm the requested setting.",
-      "restored": true,
-      "changedReadback": false,
-      "restoreError": null
-    },
-    {
-      "status": "failed",
-      "reconnectError": null,
-      "id": "sourceSwitch",
-      "setError": "The headphones did not confirm the requested setting.",
-      "restored": true,
-      "changedReadback": false,
-      "restoreError": null
-    }
-  ],
-  "reconnect_validation": {
-    "pure_policy_regression": "passed; backoff, sleep/wake, duplicate retry prevention, disable and manual-disconnect behavior",
-    "physical_mac_sleep_wake": "not performed",
-    "live_session_recovery": "Not confirmed; final live retry could not open Bluetooth transport"
-  },
-  "multipoint_audio_retry": {
-    "status": "blocked before settings writes",
-    "reason": "macOS reported Bluetooth off or unavailable",
-    "settings_changed": false,
-    "source_switch_confirmed": false
-  },
-  "publication_privacy": {
-    "tracked_files_and_reachable_history": "passed",
-    "commit_email": "GitHub no-reply",
-    "png_text_and_exif": "none",
-    "screenshots": "visually reviewed; paired-device names collapsed",
-    "local_pre_push_guard": "enabled in maintainer checkout",
-    "ci_guard": "configured with full Git history",
-    "limits": "heuristic scan; not a guarantee or an independent audit"
-  },
-  "installer_validation": {
+  "historical_installer_validation": {
     "format": "UDZO DMG, HFS+",
     "filename": "OpenSound-0.4.0-macos-arm64.dmg",
     "image_checksum": "passed",
@@ -238,5 +281,15 @@
     "artifact_privacy_guard": "passed",
     "signing_limit": "No Developer ID identity or notarization configured",
     "installed_to_system_applications": false
+  },
+  "installer_validation": {
+    "filename": "OpenSound-0.4.1-macos-arm64.dmg",
+    "image_checksum": "passed",
+    "mounted_app_version": "0.4.1",
+    "mounted_app_signature": "passed; ad-hoc hardened runtime",
+    "artifact_privacy_guard": "passed",
+    "installed_app_version": "0.4.1",
+    "installed_app_signature": "passed",
+    "notarized": false
   }
 }

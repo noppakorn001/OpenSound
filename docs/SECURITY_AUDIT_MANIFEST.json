@@ -1,19 +1,19 @@
 {
   "review_date": "2026-10-14",
-  "release": "OpenSound 0.4.0",
+  "release": "OpenSound 0.4.1",
   "files": {
-    "Sources/App/WFControl.swift": "dce93cb9f615d745bdcc93b5a6ad5ff068ae3c63f3977dbd91faa9721b7519c6",
-    "Sources/Core/WFProtocol.h": "560fceef9f3f1f723204cf1774aba373c0837f66c8453d1b173ec3770680e7ad",
-    "Sources/Core/WFProtocol.cpp": "bd70f00abac886cd7c02ff445eee87429beb72197df7937dfd3fa528e0a806e0",
-    "Sources/Native/WFBridge.h": "ff593307f6d524035899ddcbafcd8347aefedec7ef5b791a5a5f344eaaa59393",
-    "Sources/Native/WFBridge.mm": "444d076e58886bb55262a164139fba9411d48a93170c42685e63841346999bfa",
+    "Sources/App/WFControl.swift": "1ce5061d95ccca30384addc1e68d467cb7f87bc06c9728ee1c971953f7532612",
+    "Sources/Core/WFProtocol.h": "479903552d8457529d843e43c3aa72436203ccce6ddbc4ddc705c700500f9735",
+    "Sources/Core/WFProtocol.cpp": "202f50204e5157ca7701defb8d8c19f93d8ffb669ee6f2a465a46b0cfb1cbc33",
+    "Sources/Native/WFBridge.h": "d85b1b39c8ca232e2d994df848e0dacb14a1444364d7a3beab9c0d968ef61d99",
+    "Sources/Native/WFBridge.mm": "f23e0b27d7ac9be0408d01c60b17fdcfa24f96f632622f7311b333ce5eb1c75c",
     "Sources/Native/WFTransport.h": "3c087e31e80e636ced57dbb7a1b4a1257aec447921db396eecc25ceeaf656309",
     "Sources/Native/WFTransport.mm": "7907c200aad56365128027e5ff54c586c6d1cf028935ceea5f0f410aa64ee534",
-    "Resources/Info.plist": "8977bd81c0b0c02dfbdfe48c1d680dd0625832438d0c425e2f3404d9d2b20d36",
+    "Resources/Info.plist": "d75b831853a63b9973dcb525ecdaae1e896d510de216406fcfa1339f294afce7",
     "scripts/build.sh": "0b652116996c302ae434df303bc045192181a5fd8574fb25cd5921cb142dd06d",
-    "scripts/package-source.sh": "34be4901d0d4f023f3738b974b0d530df8e923e26df3e9762aa67307c76767f7",
+    "scripts/package-source.sh": "999b40035799511a38980c0fe99edc8136e6cf34d84d3be96cb17c3f66841552",
     "scripts/security-test.sh": "e1ad2388bd54966caf04e59e10248c2279e055d3754415c7ad792c99a70b369f",
-    "tests/SecurityTests.cpp": "30baee38b92855c3940ee2da85025a06495d916e81f7c8dd06542e39e8e6f85d",
+    "tests/SecurityTests.cpp": "0cc942f8762cc204e51bdbe368eefd6faed65e0ff474930042b05300801802ce",
     "tests/DiagnosticLogTests.mm": "899346c7e5a7df5c0620293fd5cb4f4dc85eaf34db392711b167e18b903e62fa",
     ".github/workflows/build.yml": "3b24d4a6997e5b04becf8486b2ea43997f8d80913e54d4c90fdb892b4dc9fc72",
     "Sources/App/ReconnectPolicy.swift": "89d7df15d6dbb1f42bf8d57c9ad0a7c87a31cbc8e3fa682475c61b0076c68992",
@@ -24,17 +24,20 @@
     ".githooks/pre-push": "cfb88b03087d4417e0c1d0152aedbb3a2aaf06583e3b4af433045bc056ea1596",
     "scripts/package-dmg.sh": "6fc6e53f537bc6366cb4e44ed426927d764618d9105fba6d544140749f6de187",
     "scripts/create-finder-layout.py": "53c101512f949193ddef3eec42cfede428f8fc98a4445f5f843fb28f29d1ad35",
-    "Resources/Installer/FinderLayout.dsstore": "46b5210e3130d0c6bae3dd4c654cda6736094cc2dd48892668ca91240ebb52f3"
+    "Resources/Installer/FinderLayout.dsstore": "46b5210e3130d0c6bae3dd4c654cda6736094cc2dd48892668ca91240ebb52f3",
+    "Sources/Native/TouchAssignmentTests.mm": "c248937e96d22ca13aa366dcececda1e26cc2b137721d814f87cd7a075bed973",
+    "scripts/touch-hardware-test.sh": "46c9dc3624ab1fbefb3f75103c5fe18bf2e2d520a1a7a787129ed3b0d8715574"
   },
   "tests": {
-    "protocol_sanitizer_checks": 423,
+    "protocol_sanitizer_checks": 437,
     "malformed_input_cases": 100000,
     "diagnostic_log_regression": "passed",
     "feature_catalogue_tests": 8,
     "isolated_public_source_optional_regeneration": "skipped without reference checkout",
     "clang_analyzer_diagnostics": 0,
     "wf1000xm4_core_bridge_regression": "8 steps passed and restored",
-    "reconnect_policy": "passed"
+    "reconnect_policy": "passed",
+    "touch_atomic_pairs": "Six pairs confirmed, rejection preservation passed, original values restored; UI apply/restoration passed"
   },
   "independent_security_review": false
 }

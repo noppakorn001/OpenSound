@@ -312,12 +312,13 @@ std::vector<SettingSpec> settingSpecs(ProtocolFamily family, const std::vector<u
     return result;
 }
 std::optional<std::vector<AssignmentKey>> parseAssignmentCapabilities(const Bytes& p) {
-    if(p.size()<3 || p[0]!=0xf1 || p[1]!=3) return std::nullopt;
+    if(p.size()<3 || p[0]!=0xf1 || p[1]!=3 || p[2]==0) return std::nullopt;
     size_t offset=3; std::vector<AssignmentKey> result;
     auto take=[&](size_t n){ if(n>p.size()-offset) throw std::out_of_range("Truncated assignment capability"); size_t old=offset; offset+=n; return old; };
     try {
         for(unsigned keyIndex=0;keyIndex<p[2];++keyIndex) {
             auto header=take(4); AssignmentKey key{p[header],p[header+1],p[header+2],{}};
+            if(key.key>5 || key.type>2 || p[header+3]==0 || std::any_of(result.begin(),result.end(),[&](const auto& prior){return prior.key==key.key;})) return std::nullopt;
             for(unsigned presetIndex=0;presetIndex<p[header+3];++presetIndex) {
                 auto preset=take(3); key.presets.push_back(p[preset]);
                 take(size_t(p[preset+1])*2);
@@ -328,6 +329,28 @@ std::optional<std::vector<AssignmentKey>> parseAssignmentCapabilities(const Byte
     } catch(const std::out_of_range&) { return std::nullopt; }
     if(offset!=p.size()) return std::nullopt;
     return result;
+}
+std::optional<std::vector<uint8_t>> parseAssignmentValues(const std::vector<AssignmentKey>& keys,const Bytes& p) {
+    if(keys.empty() || keys.size()>255 || p.size()!=3+keys.size() || p[0]!=0xf7 || p[1]!=3 || p[2]!=keys.size()) return std::nullopt;
+    std::vector<uint8_t> values(p.begin()+3,p.end());
+    for(size_t i=0;i<keys.size();++i)
+        if(std::find(keys[i].presets.begin(),keys[i].presets.end(),values[i])==keys[i].presets.end()) return std::nullopt;
+    return values;
+}
+std::optional<std::vector<bool>> parseAssignmentAvailability(size_t count,const Bytes& p) {
+    if(!count || count>255 || p.size()!=3+count || p[0]!=0xf3 || p[1]!=3 || p[2]!=count) return std::nullopt;
+    std::vector<bool> enabled;
+    for(size_t i=3;i<p.size();++i) { if(p[i]>1) return std::nullopt; enabled.push_back(p[i]==0); }
+    return enabled;
+}
+Bytes setAssignmentValues(const std::vector<AssignmentKey>& keys,const Bytes& current,const std::vector<std::optional<uint8_t>>& changes) {
+    if(!parseAssignmentValues(keys,current) || changes.size()!=keys.size()) throw std::invalid_argument("Invalid current touch-control list.");
+    Bytes command=current; command[0]=0xf8;
+    for(size_t i=0;i<changes.size();++i) if(changes[i]) {
+        if(std::find(keys[i].presets.begin(),keys[i].presets.end(),*changes[i])==keys[i].presets.end()) throw std::invalid_argument("Touch action is not advertised by the headphones.");
+        command[i+3]=*changes[i];
+    }
+    return command;
 }
 std::optional<std::vector<PairedDevice>> parsePairedDevices(const Bytes& p) {
     if(p.size()<4 || p[0]!=0x37 || (p[1]!=0 && p[1]!=2)) return std::nullopt;

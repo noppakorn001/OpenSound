@@ -26,7 +26,7 @@ No exploitable critical or high-severity issue was established during this revie
 
 ## Verification
 
-- Existing framing/protocol regression suite: 423 checks with AddressSanitizer and UndefinedBehaviorSanitizer.
+- Existing framing/protocol regression suite: 437 checks with AddressSanitizer and UndefinedBehaviorSanitizer, including complete assignment-list counts, advertised presets and availability enums.
 - Security suite: 100,000 deterministic random and mutated malformed inputs across framing, battery, ANC, EQ, handshake, support functions, touch assignment, pairing history and general settings; oversized delimiter stream and recovery; malformed descriptor and type-mismatch cases.
 - Diagnostic log tests: 0600 permissions, 8 MiB cap, existing-file preservation and symlink-target preservation. Tests use disposable local files and do not connect to headphones.
 - Clang static analyzer: Core protocol and both Native runtime implementation files; no analyzer diagnostics in the final run.
@@ -42,7 +42,7 @@ No exploitable critical or high-severity issue was established during this revie
 3. The protocol has no application nonce or strong request identity. Opcode/inquiry/table matching, serial requests, alternating ACK state and duplicate suppression reduce ambiguity; a delayed reply with the same command shape cannot always be distinguished cryptographically from the next request.
 4. Diagnostic data is plaintext, opt-in, owner-only and size-bounded; there is no encrypted storage or automatic retention policy. Top-level existing local analysis JSON/captures/screenshots were changed to mode 0600 during this review, but historical contents were not retroactively sanitized. Only the allowlisted source archive is suitable for public review.
 5. Fuzzing is bounded and deterministic, not exhaustive or coverage-guided. No long-running RF adversarial test, independent audit, compromised-headset test, macOS Bluetooth penetration test or formal verification was performed.
-6. Actual hardware validation covers one WF-1000XM4 firmware 2.3.1 unit. Unsupported layouts fail closed, but additional typed handlers and other model firmware need separate tests. Right-touch reassignment still has failed readback and must not be described as working.
+6. Actual hardware validation covers one WF-1000XM4 firmware 2.3.1 unit. Unsupported layouts fail closed, but additional typed handlers and other model firmware need separate tests. Six paired touch assignments now pass exact readback in 0.4.1; rejected combinations preserve the previous pair. The tested System voice assistant configuration rejects pairs without Playback. Other assistant modes and firmware remain unverified.
 7. Connection quality and automatic power-off writes/readbacks/restorations passed on this device. Multipoint changes were not confirmed; source switching reported A2DP/calling rejection conditions. A later audio-ready retry stopped before writes because Bluetooth was unavailable. Assistant changes are not write-tested. Volume/EQ changes require user action; the app does not automatically increase volume or adjust sound on startup.
 8. All-model BLE/LE Audio transport, safe listening, activity/location policies, Sony cloud/account and firmware workflows are absent or excluded; no device safety policy is implied by these missing controls.
 
