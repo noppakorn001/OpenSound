@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0"><dict>
+<key>CFBundleExecutable</key><string>OpenSound</string>
+<key>CFBundleIdentifier</key><string>org.opensound.headphones</string>
+<key>CFBundleName</key><string>OpenSound</string>
+<key>CFBundleDisplayName</key><string>OpenSound</string>
+<key>CFBundleIconFile</key><string>OpenSound</string>
+<key>CFBundleDevelopmentRegion</key><string>en</string>
+<key>CFBundleLocalizations</key><array><string>en</string></array>
+<key>CFBundleVersion</key><string>4</string>
+<key>CFBundleShortVersionString</key><string>0.4.0</string>
+<key>CFBundlePackageType</key><string>APPL</string>
+<key>LSMinimumSystemVersion</key><string>14.0</string>
+<key>NSHighResolutionCapable</key><true/>
+<key>NSBluetoothAlwaysUsageDescription</key><string>OpenSound connects to your paired Sony headphones to read status and adjust supported settings.</string>
+<key>NSBluetoothPeripheralUsageDescription</key><string>OpenSound reads and adjusts your Sony headphones over Bluetooth.</string>
+</dict></plist>

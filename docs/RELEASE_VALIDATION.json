@@ -1,0 +1,210 @@
+{
+  "schema_version": 1,
+  "release": "OpenSound 0.4.0",
+  "device": "Sony WF-1000XM4",
+  "firmware": "2.3.1",
+  "scope": "One physical unit; protocol readback, not audio quality measurement",
+  "tests": [
+    {
+      "id": "dsee",
+      "title": "DSEE",
+      "status": "passed",
+      "changed_readback": true,
+      "restored": true,
+      "limitation": null
+    },
+    {
+      "id": "wearPause",
+      "title": "Pause when removed",
+      "status": "passed",
+      "changed_readback": true,
+      "restored": true,
+      "limitation": null
+    },
+    {
+      "id": "speakToChatLegacy",
+      "title": "Speak to Chat",
+      "status": "passed",
+      "changed_readback": true,
+      "restored": true,
+      "limitation": null
+    },
+    {
+      "id": "speakSensitivityLegacy",
+      "title": "Speak to Chat sensitivity",
+      "status": "passed",
+      "changed_readback": true,
+      "restored": true,
+      "limitation": null
+    },
+    {
+      "id": "speakTimeoutLegacy",
+      "title": "Speak to Chat resume time",
+      "status": "passed",
+      "changed_readback": true,
+      "restored": true,
+      "limitation": null
+    },
+    {
+      "id": "speakVoiceFocus",
+      "title": "Speak to Chat voice focus",
+      "status": "passed",
+      "changed_readback": true,
+      "restored": true,
+      "limitation": null
+    },
+    {
+      "id": "assignment0",
+      "title": "Left touch control",
+      "status": "passed",
+      "changed_readback": true,
+      "restored": true,
+      "limitation": null
+    },
+    {
+      "id": "assignment1",
+      "title": "Right touch control",
+      "status": "failed",
+      "changed_readback": false,
+      "restored": true,
+      "limitation": "The headphones did not confirm the requested setting."
+    },
+    {
+      "id": "voiceGuidance",
+      "title": "Voice guidance",
+      "status": "passed",
+      "changed_readback": true,
+      "restored": true,
+      "limitation": null
+    },
+    {
+      "id": "volume",
+      "title": "Headphone volume",
+      "status": "passed",
+      "changed_readback": true,
+      "restored": true,
+      "limitation": null
+    }
+  ],
+  "not_write_tested": [
+    "Headphone voice assistant"
+  ],
+  "privacy": "No Bluetooth addresses, paired-device names, paths, current settings values or raw traffic included.",
+  "offline_validation": {
+    "protocol_sanitizer_checks": 423,
+    "catalogue_tests": 8,
+    "public_package_optional_regeneration_test": "skipped when reference checkout is absent",
+    "public_package_build": "passed without IPA, vendor checkout, or private research files"
+  },
+  "core_bridge_regression": [
+    {
+      "step": "connect",
+      "status": "passed"
+    },
+    {
+      "step": "anc",
+      "status": "passed"
+    },
+    {
+      "step": "ambient",
+      "status": "passed"
+    },
+    {
+      "step": "off",
+      "status": "passed"
+    },
+    {
+      "step": "restore",
+      "status": "passed"
+    },
+    {
+      "step": "eq-off",
+      "status": "passed"
+    },
+    {
+      "step": "eq-manual",
+      "status": "passed"
+    },
+    {
+      "step": "eq-restore",
+      "status": "passed"
+    }
+  ],
+  "ui_validation": {
+    "english_interface": true,
+    "portrait_window": true,
+    "dsee_auto_and_restore_off": "passed with device readback",
+    "disconnect_clears_controls": "passed",
+    "cow_logo_matches_user_file": true,
+    "finder_launch": "passed",
+    "device_product_renders": 14,
+    "wf1000xm4_original_product_render": "Confirmed visually and byte-for-byte; cow icon retained"
+  },
+  "right_assignment_retry": {
+    "wearing_state": "User confirmed both earbuds worn",
+    "key_availability": "Both keys reported enabled",
+    "result": "No matching readback for right touch changes, including after temporarily assigning left Volume control",
+    "original_left_and_right_restored": true,
+    "cause": "Not established",
+    "release_0_4_retry": "Failed readback; original assignment restored"
+  },
+  "security_validation": {
+    "date": "2026-10-14",
+    "malformed_input_cases": 100000,
+    "diagnostic_file_privacy_and_bound_tests": "passed",
+    "clang_analyzer_diagnostics": 0,
+    "hardened_runtime": true,
+    "piE_arm64": true,
+    "no_third_party_runtime_dylibs": true,
+    "independent_audit": false,
+    "public_source_build_and_security_tests": "passed"
+  },
+  "menu_bar_validation": {
+    "main_window_close_app_remains_running": "passed; OpenSound remained isRunning=true after close",
+    "direct_status_item_click": "UI automation could not access SystemUIServer; not directly verified",
+    "quick_controls": "Shared Controls menu displayed live battery, ANC/EQ preset options and Connect action completed"
+  },
+  "connection_settings_tests": [
+    {
+      "status": "passed",
+      "reconnectError": null,
+      "id": "soundQuality",
+      "setError": null,
+      "restored": true,
+      "changedReadback": true,
+      "restoreError": null
+    },
+    {
+      "status": "passed",
+      "reconnectError": null,
+      "id": "autoOff",
+      "setError": null,
+      "restored": true,
+      "changedReadback": true,
+      "restoreError": null
+    },
+    {
+      "status": "failed",
+      "reconnectError": null,
+      "id": "general210",
+      "setError": "The headphones did not confirm the requested setting.",
+      "restored": true,
+      "changedReadback": false,
+      "restoreError": null
+    },
+    {
+      "status": "failed",
+      "reconnectError": null,
+      "id": "sourceSwitch",
+      "setError": "The headphones did not confirm the requested setting.",
+      "restored": true,
+      "changedReadback": false,
+      "restoreError": null
+    }
+  ],
+  "reconnect_validation": {
+    "pure_policy_regression": "passed; backoff, sleep/wake, duplicate retry prevention, disable and manual-disconnect behavior",
+    "physical_mac_sleep_wake": "not performed",
+    "live_session_recovery": "pending final UI test"
+  }
+}

@@ -1,0 +1,1997 @@
+{
+  "schema_version": 1,
+  "controls": [
+    {
+      "id": "v1t1.AlertInquiredType.FIXED_MESSAGE",
+      "title": "Fixed message",
+      "group": "Alert",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v1t1.AlertInquiredType.VIBRATOR_ALERT_NOTIFICATION",
+      "title": "Vibrator alert notification",
+      "group": "Alert",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v1t1.AudioInquiredType.CONNECTION_MODE",
+      "title": "Connection mode",
+      "group": "Audio",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v1t1.AudioInquiredType.UPSCALING",
+      "title": "Upscaling",
+      "group": "Audio",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v1t1.BatteryInquiredType.BATTERY",
+      "title": "Battery",
+      "group": "Battery",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v1t1.BatteryInquiredType.LEFT_RIGHT_BATTERY",
+      "title": "Left right battery",
+      "group": "Battery",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v1t1.BatteryInquiredType.CRADLE_BATTERY",
+      "title": "Cradle battery",
+      "group": "Battery",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v1t1.CommonCapabilityInquiredType.FIXED_VALUE",
+      "title": "Fixed value",
+      "group": "CommonCapability",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v1t1.ConnectionStatusInquiredType.LEFT_RIGHT_CONNECTION_STATUS",
+      "title": "Left right connection status",
+      "group": "ConnectionStatus",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v1t1.DeviceInfoInquiredType.MODEL_NAME",
+      "title": "Model name",
+      "group": "DeviceInfo",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v1t1.DeviceInfoInquiredType.FW_VERSION",
+      "title": "Fw version",
+      "group": "DeviceInfo",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v1t1.DeviceInfoInquiredType.SERIES_AND_COLOR_INFO",
+      "title": "Series and color info",
+      "group": "DeviceInfo",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v1t1.DeviceInfoInquiredType.INSTRUCTION_GUIDE",
+      "title": "Instruction guide",
+      "group": "DeviceInfo",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v1t1.EqEbbInquiredType.PRESET_EQ",
+      "title": "Preset eq",
+      "group": "EqEbb",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v1t1.EqEbbInquiredType.EBB",
+      "title": "Ebb",
+      "group": "EqEbb",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v1t1.EqEbbInquiredType.PRESET_EQ_NONCUSTOMIZABLE",
+      "title": "Preset eq noncustomizable",
+      "group": "EqEbb",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v1t1.GsInquiredType.GENERAL_SETTING1",
+      "title": "General setting1",
+      "group": "Gs",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v1t1.GsInquiredType.GENERAL_SETTING2",
+      "title": "General setting2",
+      "group": "Gs",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v1t1.GsInquiredType.GENERAL_SETTING3",
+      "title": "General setting3",
+      "group": "Gs",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v1t1.LinkControlInquiredType.KEEP_ALIVE",
+      "title": "Keep alive",
+      "group": "LinkControl",
+      "status": "catalogued_not_implemented",
+      "category": "protocol_or_telemetry",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v1t1.LogInquiredType.ACTION_LOG_NOTIFIER",
+      "title": "Action log notifier",
+      "group": "Log",
+      "status": "catalogued_not_implemented",
+      "category": "protocol_or_telemetry",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v1t1.NcAsmInquiredType.NOISE_CANCELLING",
+      "title": "Noise cancelling",
+      "group": "NcAsm",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v1t1.NcAsmInquiredType.NOISE_CANCELLING_AND_AMBIENT_SOUND_MODE",
+      "title": "Noise cancelling and ambient sound mode",
+      "group": "NcAsm",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v1t1.NcAsmInquiredType.AMBIENT_SOUND_MODE",
+      "title": "Ambient sound mode",
+      "group": "NcAsm",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v1t1.OptimizerInquiredType.NC_OPTIMIZER",
+      "title": "Nc optimizer",
+      "group": "Optimizer",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v1t1.OptimizerInquiredType.NC_MUSIC_OPTIMIZER",
+      "title": "Nc music optimizer",
+      "group": "Optimizer",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v1t1.PlayInquiredType.PLAYBACK_CONTROLLER",
+      "title": "Playback controller",
+      "group": "Play",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v1t1.PowerOffInquiredType.FIXED_VALUE",
+      "title": "Fixed value",
+      "group": "PowerOff",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v1t1.SenseInquiredType.AUTO_NC_ASM",
+      "title": "Auto nc asm",
+      "group": "Sense",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v1t1.SportsInquiredType.TRAINING_MODE",
+      "title": "Training mode",
+      "group": "Sports",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v1t1.SystemInquiredType.VIBRATOR",
+      "title": "Vibrator",
+      "group": "System",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v1t1.SystemInquiredType.POWER_SAVING_MODE",
+      "title": "Power saving mode",
+      "group": "System",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v1t1.SystemInquiredType.CONTROL_BY_WEARING",
+      "title": "Control by wearing",
+      "group": "System",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v1t1.SystemInquiredType.AUTO_POWER_OFF",
+      "title": "Auto power off",
+      "group": "System",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v1t1.SystemInquiredType.SMART_TALKING_MODE",
+      "title": "Smart talking mode",
+      "group": "System",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v1t1.SystemInquiredType.ASSIGNABLE_SETTINGS",
+      "title": "Assignable settings",
+      "group": "System",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v1t1.UpdateInquiredType.FW_UPDATE_MODE",
+      "title": "Fw update mode",
+      "group": "Update",
+      "status": "catalogued_not_implemented",
+      "category": "firmware_updater_excluded",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v1t1.UpdateInquiredType.CATEGORY_ID",
+      "title": "Category id",
+      "group": "Update",
+      "status": "catalogued_not_implemented",
+      "category": "firmware_updater_excluded",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v1t1.UpdateInquiredType.SERVICE_ID",
+      "title": "Service id",
+      "group": "Update",
+      "status": "catalogued_not_implemented",
+      "category": "firmware_updater_excluded",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v1t1.UpdateInquiredType.NATION_CODE",
+      "title": "Nation code",
+      "group": "Update",
+      "status": "catalogued_not_implemented",
+      "category": "firmware_updater_excluded",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v1t1.UpdateInquiredType.LANGUAGE",
+      "title": "Language",
+      "group": "Update",
+      "status": "catalogued_not_implemented",
+      "category": "firmware_updater_excluded",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v1t1.UpdateInquiredType.SERIAL_NUMBER",
+      "title": "Serial number",
+      "group": "Update",
+      "status": "catalogued_not_implemented",
+      "category": "firmware_updater_excluded",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v1t1.UpdateInquiredType.BLE_TX_POWER",
+      "title": "Ble tx power",
+      "group": "Update",
+      "status": "catalogued_not_implemented",
+      "category": "firmware_updater_excluded",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v1t1.UpdateInquiredType.BATTERY_POWER_THRESHOLD",
+      "title": "Battery power threshold",
+      "group": "Update",
+      "status": "catalogued_not_implemented",
+      "category": "firmware_updater_excluded",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v1t1.UpdateInquiredType.UPDATE_METHOD",
+      "title": "Update method",
+      "group": "Update",
+      "status": "catalogued_not_implemented",
+      "category": "firmware_updater_excluded",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v1t1.UpdateInquiredType.BATTERY_POWER_THRESHOLD_FOR_INTERRUPTIONG_FW_UPDATE",
+      "title": "Battery power threshold for interruptiong fw update",
+      "group": "Update",
+      "status": "catalogued_not_implemented",
+      "category": "firmware_updater_excluded",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v1t1.UpdateInquiredType.UNIQUE_ID_FOR_DEVICE_BINDING",
+      "title": "Unique id for device binding",
+      "group": "Update",
+      "status": "catalogued_not_implemented",
+      "category": "firmware_updater_excluded",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v1t1.VptInquiredType.VPT",
+      "title": "Vpt",
+      "group": "Vpt",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v1t1.VptInquiredType.SOUND_POSITION",
+      "title": "Sound position",
+      "group": "Vpt",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v1t2.PeripheralInquiredType.PAIRING_DEVICE_MANAGEMENT_CLASSIC_BT",
+      "title": "Pairing device management classic bt",
+      "group": "Peripheral",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v1t2.VoiceGuidanceInquiredType.VOICE_GUIDANCE_SETTING",
+      "title": "Voice guidance setting",
+      "group": "VoiceGuidance",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.AlertInquiredType.FIXED_MESSAGE",
+      "title": "Fixed message",
+      "group": "Alert",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.AlertInquiredType.VIBRATOR_ALERT_NOTIFICATION",
+      "title": "Vibrator alert notification",
+      "group": "Alert",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.AlertInquiredType.FIXED_MESSAGE_WITH_LEFT_RIGHT_SELECTION",
+      "title": "Fixed message with left right selection",
+      "group": "Alert",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.AlertInquiredType.VOICE_ASSISTANT_ALERT_NOTIFICATION",
+      "title": "Voice assistant alert notification",
+      "group": "Alert",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.AlertInquiredType.APP_BECOMES_FOREGROUND",
+      "title": "App becomes foreground",
+      "group": "Alert",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.AlertInquiredType.LE_AUDIO_ALERT_NOTIFICATION",
+      "title": "Le audio alert notification",
+      "group": "Alert",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.AlertInquiredType.FLEXIBLE_MESSAGE",
+      "title": "Flexible message",
+      "group": "Alert",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.AudioInquiredType.CONNECTION_MODE",
+      "title": "Connection mode",
+      "group": "Audio",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.AudioInquiredType.UPSCALING",
+      "title": "Upscaling",
+      "group": "Audio",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.AudioInquiredType.CONNECTION_MODE_WITH_LDAC_STATUS",
+      "title": "Connection mode with ldac status",
+      "group": "Audio",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.AudioInquiredType.BGM_MODE",
+      "title": "Bgm mode",
+      "group": "Audio",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.AudioInquiredType.UPMIX_CINEMA",
+      "title": "Upmix cinema",
+      "group": "Audio",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.AudioInquiredType.CONNECTION_MODE_CLASSIC_AUDIO_LE_AUDIO",
+      "title": "Connection mode classic audio le audio",
+      "group": "Audio",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.AudioInquiredType.VOICE_CONTENTS",
+      "title": "Voice contents",
+      "group": "Audio",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.AudioInquiredType.SOUND_LEAKAGE_REDUCTION",
+      "title": "Sound leakage reduction",
+      "group": "Audio",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.AudioInquiredType.LISTENING_OPTION_ASSIGN_CUSTOMIZABLE",
+      "title": "Listening option assign customizable",
+      "group": "Audio",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.AudioInquiredType.BGM_MODE_AND_ERRORCODE",
+      "title": "Bgm mode and errorcode",
+      "group": "Audio",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.AudioInquiredType.UPMIX_SERIES",
+      "title": "Upmix series",
+      "group": "Audio",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.AudioInquiredType.UPSCALING_AUTO_OFF_WITH_STATUS_DISABLE_REASON",
+      "title": "Upscaling auto off with status disable reason",
+      "group": "Audio",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.CommonInquiredType.CONCIERGE",
+      "title": "Concierge",
+      "group": "Common",
+      "status": "catalogued_not_implemented",
+      "category": "phone_or_service_dependency",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.CommonInquiredType.CONNECTION_STATUS",
+      "title": "Connection status",
+      "group": "Common",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.CommonInquiredType.AUDIO_CODEC",
+      "title": "Audio codec",
+      "group": "Common",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.CommonInquiredType.UPSCALING_EFFECT",
+      "title": "Upscaling effect",
+      "group": "Common",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.CommonInquiredType.BLE_SETUP",
+      "title": "Ble setup",
+      "group": "Common",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.CommonInquiredType.CONNECTION_ESTABLISHED_TIME",
+      "title": "Connection established time",
+      "group": "Common",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.CommonInquiredType.DEVICE_SPECIAL_MODE",
+      "title": "Device special mode",
+      "group": "Common",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.CommonInquiredType.SMART_PHONE_AND_CONNECTED_DEVICE_INFORMATION",
+      "title": "Smart phone and connected device information",
+      "group": "Common",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.CommonInquiredType.TANDEM_RECONNECTION_REQUEST",
+      "title": "Tandem reconnection request",
+      "group": "Common",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.CommonInquiredType.DISPLAY_FW_VERSION",
+      "title": "Display fw version",
+      "group": "Common",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.ConnectInquiredType.FIXED_VALUE",
+      "title": "Fixed value",
+      "group": "Connect",
+      "status": "catalogued_not_implemented",
+      "category": "protocol_or_telemetry",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.EqEbbInquiredType.PRESET_EQ",
+      "title": "Preset eq",
+      "group": "EqEbb",
+      "status": "implemented_hardware_verified_wf1000xm4",
+      "category": "headphone_control",
+      "reason": null
+    },
+    {
+      "id": "v2t1.EqEbbInquiredType.EBB",
+      "title": "Ebb",
+      "group": "EqEbb",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.EqEbbInquiredType.PRESET_EQ_NONCUSTOMIZABLE",
+      "title": "Preset eq noncustomizable",
+      "group": "EqEbb",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.EqEbbInquiredType.PRESET_EQ_AND_ULT_MODE",
+      "title": "Preset eq and ult mode",
+      "group": "EqEbb",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.EqEbbInquiredType.PRESET_EQ_AND_ERRORCODE",
+      "title": "Preset eq and errorcode",
+      "group": "EqEbb",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.EqEbbInquiredType.SOUND_EFFECT",
+      "title": "Sound effect",
+      "group": "EqEbb",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.EqEbbInquiredType.CUSTOM_EQ",
+      "title": "Custom eq",
+      "group": "EqEbb",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.EqEbbInquiredType.TURN_KEY_EQ",
+      "title": "Turn key eq",
+      "group": "EqEbb",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.EqEbbInquiredType.CUSTOMIZABLE_SOUND_EFFECT_SELECT",
+      "title": "Customizable sound effect select",
+      "group": "EqEbb",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.EqEbbInquiredType.CUSTOMIZABLE_SOUND_EFFECT_RESET",
+      "title": "Customizable sound effect reset",
+      "group": "EqEbb",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.EqEbbInquiredType.CUSTOMIZABLE_SOUND_EFFECT_CUSTOM",
+      "title": "Customizable sound effect custom",
+      "group": "EqEbb",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.EqEbbInquiredType.CUSTOMIZABLE_SOUND_EFFECT_EXTERNAL_UPDATE",
+      "title": "Customizable sound effect external update",
+      "group": "EqEbb",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.EqEbbInquiredType.ULT_BTN_SOUND_EFFECT_ASSIGN",
+      "title": "Ult btn sound effect assign",
+      "group": "EqEbb",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.GsInquiredType.GENERAL_SETTING1",
+      "title": "General setting1",
+      "group": "Gs",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.GsInquiredType.GENERAL_SETTING2",
+      "title": "General setting2",
+      "group": "Gs",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.GsInquiredType.GENERAL_SETTING3",
+      "title": "General setting3",
+      "group": "Gs",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.GsInquiredType.GENERAL_SETTING4",
+      "title": "General setting4",
+      "group": "Gs",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.LEAInquiredType.TWS_SUPPORTS_A2DP_LEA_UNI_LEA_BROAD_WITH_CTKD",
+      "title": "Tws supports a2dp lea uni lea broad with ctkd",
+      "group": "LEA",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.LEAInquiredType.HBS_SUPPORTS_A2DP_LEA_UNI_LEA_BROAD_WITH_CTKD",
+      "title": "Hbs supports a2dp lea uni lea broad with ctkd",
+      "group": "LEA",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.LEAInquiredType.TWS_SUPPORTS_LEA_UNI_LEA_BROAD",
+      "title": "Tws supports lea uni lea broad",
+      "group": "LEA",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.LEAInquiredType.CLASSIC_ONLY_LE_CLASSIC_SETTING",
+      "title": "Classic only le classic setting",
+      "group": "LEA",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.LEAInquiredType.EXECUTE_TANDEM_TARGET_CHANGE",
+      "title": "Execute tandem target change",
+      "group": "LEA",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.LEAInquiredType.CHANGE_TANDEM_CONNECTION_PROFILE_FOR_ANDROID",
+      "title": "Change tandem connection profile for android",
+      "group": "LEA",
+      "status": "catalogued_not_implemented",
+      "category": "phone_or_service_dependency",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.LEAInquiredType.NOTIFY_DISCONNECTING_TANDEM",
+      "title": "Notify disconnecting tandem",
+      "group": "LEA",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.LEAInquiredType.BGM_MODE_CANT_BE_USED_WITH_LEA_CONNECTION",
+      "title": "Bgm mode cant be used with lea connection",
+      "group": "LEA",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.LEAInquiredType.HEAD_TRACKER_CANT_BE_USED_WITH_LEA_CONNECTION",
+      "title": "Head tracker cant be used with lea connection",
+      "group": "LEA",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.LEAInquiredType.PAIRING_DEVICE_MANAGEMENT_CANT_BE_USED_WITH_LEA_CONNECTION",
+      "title": "Pairing device management cant be used with lea connection",
+      "group": "LEA",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.LEAInquiredType.SOUND_AR_CANT_BE_USED_WITH_LEA_CONNECTION",
+      "title": "Sound ar cant be used with lea connection",
+      "group": "LEA",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.LEAInquiredType.AUTO_PLAY_CANT_BE_USED_WITH_LEA_CONNECTION",
+      "title": "Auto play cant be used with lea connection",
+      "group": "LEA",
+      "status": "catalogued_not_implemented",
+      "category": "phone_or_service_dependency",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.LEAInquiredType.GATT_CONNECTABLE_CANT_BE_USED_WITH_LEA_CONNECTION",
+      "title": "Gatt connectable cant be used with lea connection",
+      "group": "LEA",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.LEAInquiredType.SOUND_AR_OPTIMIZATION_CANT_BE_USED_WITH_LEA_CONNECTION",
+      "title": "Sound ar optimization cant be used with lea connection",
+      "group": "LEA",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.LEAInquiredType.QUICK_ACCESS_CANT_BE_USED_WITH_LEA_CONNECTION",
+      "title": "Quick access cant be used with lea connection",
+      "group": "LEA",
+      "status": "catalogued_not_implemented",
+      "category": "phone_or_service_dependency",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.LEAInquiredType.CONNECTION_MODE_CANT_BE_USED_WITH_LEA_CONNECTION",
+      "title": "Connection mode cant be used with lea connection",
+      "group": "LEA",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.LEAInquiredType.VOICE_ASSISTANT_SETTINGS_CANT_BE_USED_WITH_LEA_CONNECTION",
+      "title": "Voice assistant settings cant be used with lea connection",
+      "group": "LEA",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.LEAInquiredType.VOICE_ASSISTANT_WAKE_WORD_CANT_BE_USED_WITH_LEA_CONNECTION",
+      "title": "Voice assistant wake word cant be used with lea connection",
+      "group": "LEA",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.LogInquiredType.ACTION_LOG_NOTIFIER",
+      "title": "Action log notifier",
+      "group": "Log",
+      "status": "catalogued_not_implemented",
+      "category": "protocol_or_telemetry",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.LogInquiredType.TIME_SERIES_OPERATIONLOG_NOTIFIER",
+      "title": "Time series operationlog notifier",
+      "group": "Log",
+      "status": "catalogued_not_implemented",
+      "category": "protocol_or_telemetry",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.LogInquiredType.SOUND_DROPOUT_NOTIFIER",
+      "title": "Sound dropout notifier",
+      "group": "Log",
+      "status": "catalogued_not_implemented",
+      "category": "protocol_or_telemetry",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.NcAsmInquiredType.NC_ON_OFF",
+      "title": "Nc on off",
+      "group": "NcAsm",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.NcAsmInquiredType.NC_ON_OFF_AND_ASM_ON_OFF",
+      "title": "Nc on off and asm on off",
+      "group": "NcAsm",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.NcAsmInquiredType.NC_MODE_SWITCH_AND_ASM_ON_OFF",
+      "title": "Nc mode switch and asm on off",
+      "group": "NcAsm",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.NcAsmInquiredType.NC_ON_OFF_AND_ASM_SEAMLESS",
+      "title": "Nc on off and asm seamless",
+      "group": "NcAsm",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.NcAsmInquiredType.NC_MODE_SWITCH_AND_ASM_SEAMLESS",
+      "title": "Nc mode switch and asm seamless",
+      "group": "NcAsm",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.NcAsmInquiredType.MODE_NC_ASM_AUTO_NC_MODE_SWITCH_AND_ASM_SEAMLESS",
+      "title": "Mode nc asm auto nc mode switch and asm seamless",
+      "group": "NcAsm",
+      "status": "implemented_hardware_verified_wf1000xm4",
+      "category": "headphone_control",
+      "reason": null
+    },
+    {
+      "id": "v2t1.NcAsmInquiredType.MODE_NC_ASM_DUAL_SINGLE_NC_MODE_SWITCH_AND_ASM_SEAMLESS",
+      "title": "Mode nc asm dual single nc mode switch and asm seamless",
+      "group": "NcAsm",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.NcAsmInquiredType.MODE_NC_ASM_DUAL_NC_MODE_SWITCH_AND_ASM_SEAMLESS",
+      "title": "Mode nc asm dual nc mode switch and asm seamless",
+      "group": "NcAsm",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.NcAsmInquiredType.MODE_NC_NCSS_ASM_DUAL_NC_MODE_SWITCH_AND_ASM_SEAMLESS",
+      "title": "Mode nc ncss asm dual nc mode switch and asm seamless",
+      "group": "NcAsm",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.NcAsmInquiredType.MODE_NC_ASM_DUAL_NC_MODE_SWITCH_AND_ASM_SEAMLESS_NA",
+      "title": "Mode nc asm dual nc mode switch and asm seamless na",
+      "group": "NcAsm",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.NcAsmInquiredType.ASM_ON_OFF",
+      "title": "Asm on off",
+      "group": "NcAsm",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.NcAsmInquiredType.ASM_SEAMLESS",
+      "title": "Asm seamless",
+      "group": "NcAsm",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.NcAsmInquiredType.NC_AMB_TOGGLE",
+      "title": "Nc amb toggle",
+      "group": "NcAsm",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.NcAsmInquiredType.NC_TEST_MODE",
+      "title": "Nc test mode",
+      "group": "NcAsm",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.OptInquiredType.NC_OPTIMIZER_PERSONAL_BAROMETRIC",
+      "title": "Nc optimizer personal barometric",
+      "group": "Opt",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.OptInquiredType.NC_OPTIMIZER_PERSONAL",
+      "title": "Nc optimizer personal",
+      "group": "Opt",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.OptInquiredType.NC_OPTIMIZER_BAROMETRIC",
+      "title": "Nc optimizer barometric",
+      "group": "Opt",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.OptInquiredType.SOUND_FIELD_OPTIMIZATION",
+      "title": "Sound field optimization",
+      "group": "Opt",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.OptInquiredType.TV_SOUND_BOOSTER",
+      "title": "Tv sound booster",
+      "group": "Opt",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.PlayInquiredType.PLAYBACK_CONTROL_WITH_CALL_VOLUME_ADJUSTMENT",
+      "title": "Playback control with call volume adjustment",
+      "group": "Play",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.PlayInquiredType.PLAYBACK_CONTROL_WITH_CALL_VOLUME_ADJUSTMENT_AND_FUNCTION_CHANGE",
+      "title": "Playback control with call volume adjustment and function change",
+      "group": "Play",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.PlayInquiredType.PLAYBACK_CONTROL_WITH_FUNCTION_CHANGE",
+      "title": "Playback control with function change",
+      "group": "Play",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.PlayInquiredType.MUSIC_VOLUME",
+      "title": "Music volume",
+      "group": "Play",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.PlayInquiredType.CALL_VOLUME",
+      "title": "Call volume",
+      "group": "Play",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.PlayInquiredType.MUSIC_VOLUME_WITH_MUTE",
+      "title": "Music volume with mute",
+      "group": "Play",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.PlayInquiredType.CALL_VOLUME_WITH_MUTE",
+      "title": "Call volume with mute",
+      "group": "Play",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.PlayInquiredType.PLAY_MODE",
+      "title": "Play mode",
+      "group": "Play",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.PowerInquiredType.BATTERY",
+      "title": "Battery",
+      "group": "Power",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.PowerInquiredType.LEFT_RIGHT_BATTERY",
+      "title": "Left right battery",
+      "group": "Power",
+      "status": "implemented_hardware_verified_wf1000xm4",
+      "category": "headphone_control",
+      "reason": null
+    },
+    {
+      "id": "v2t1.PowerInquiredType.CRADLE_BATTERY",
+      "title": "Cradle battery",
+      "group": "Power",
+      "status": "implemented_hardware_verified_wf1000xm4",
+      "category": "headphone_control",
+      "reason": null
+    },
+    {
+      "id": "v2t1.PowerInquiredType.POWER_OFF",
+      "title": "Power off",
+      "group": "Power",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.PowerInquiredType.AUTO_POWER_OFF",
+      "title": "Auto power off",
+      "group": "Power",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.PowerInquiredType.AUTO_POWER_OFF_WEARING_DETECTION",
+      "title": "Auto power off wearing detection",
+      "group": "Power",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.PowerInquiredType.POWER_SAVE_MODE",
+      "title": "Power save mode",
+      "group": "Power",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.PowerInquiredType.LINK_CONTROL",
+      "title": "Link control",
+      "group": "Power",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.PowerInquiredType.BATTERY_WITH_THRESHOLD",
+      "title": "Battery with threshold",
+      "group": "Power",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.PowerInquiredType.LR_BATTERY_WITH_THRESHOLD",
+      "title": "Lr battery with threshold",
+      "group": "Power",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.PowerInquiredType.CRADLE_BATTERY_WITH_THRESHOLD",
+      "title": "Cradle battery with threshold",
+      "group": "Power",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.PowerInquiredType.BATTERY_SAFE_MODE",
+      "title": "Battery safe mode",
+      "group": "Power",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.PowerInquiredType.CARING_CHARGE",
+      "title": "Caring charge",
+      "group": "Power",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.PowerInquiredType.BT_STANDBY",
+      "title": "Bt standby",
+      "group": "Power",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.PowerInquiredType.STAMINA",
+      "title": "Stamina",
+      "group": "Power",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.PowerInquiredType.AUTOMATIC_TOUCH_PANEL_BACKLIGHT_TURN_OFF",
+      "title": "Automatic touch panel backlight turn off",
+      "group": "Power",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.SARAutoPlayInquiredType.SAR",
+      "title": "Sar",
+      "group": "SARAutoPlay",
+      "status": "catalogued_not_implemented",
+      "category": "phone_or_service_dependency",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.SARAutoPlayInquiredType.AUTO_PLAY",
+      "title": "Auto play",
+      "group": "SARAutoPlay",
+      "status": "catalogued_not_implemented",
+      "category": "phone_or_service_dependency",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.SARAutoPlayInquiredType.INTEGRATED_AUTO_PLAY",
+      "title": "Integrated auto play",
+      "group": "SARAutoPlay",
+      "status": "catalogued_not_implemented",
+      "category": "phone_or_service_dependency",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.SARAutoPlayInquiredType.GATT_CONNECTABLE",
+      "title": "Gatt connectable",
+      "group": "SARAutoPlay",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.SARAutoPlayInquiredType.SAR_OPTIMIZATION_COMPASS_ACCEL_TYPE",
+      "title": "Sar optimization compass accel type",
+      "group": "SARAutoPlay",
+      "status": "catalogued_not_implemented",
+      "category": "phone_or_service_dependency",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.SARAutoPlayInquiredType.SAR_OPTIMIZATION_ACCEL_TYPE",
+      "title": "Sar optimization accel type",
+      "group": "SARAutoPlay",
+      "status": "catalogued_not_implemented",
+      "category": "phone_or_service_dependency",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.SenseInquiredType.ADAPTIVE_CONTROL",
+      "title": "Adaptive control",
+      "group": "Sense",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.SenseInquiredType.ADAPTIVE_CONTROL_WITH_PARAMETER_NOTIFICATION",
+      "title": "Adaptive control with parameter notification",
+      "group": "Sense",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.SystemInquiredType.VIBRATOR",
+      "title": "Vibrator",
+      "group": "System",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.SystemInquiredType.PLAYBACK_CONTROL_BY_WEARING",
+      "title": "Playback control by wearing",
+      "group": "System",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.SystemInquiredType.SMART_TALKING_MODE_TYPE1",
+      "title": "Smart talking mode type1",
+      "group": "System",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.SystemInquiredType.ASSIGNABLE_SETTINGS",
+      "title": "Assignable settings",
+      "group": "System",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.SystemInquiredType.VOICE_ASSISTANT_SETTINGS",
+      "title": "Voice assistant settings",
+      "group": "System",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.SystemInquiredType.VOICE_ASSISTANT_WAKE_WORD",
+      "title": "Voice assistant wake word",
+      "group": "System",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.SystemInquiredType.WEARING_STATUS_DETECTOR",
+      "title": "Wearing status detector",
+      "group": "System",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.SystemInquiredType.EARPIECE_SELECTION",
+      "title": "Earpiece selection",
+      "group": "System",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.SystemInquiredType.CALL_SETTINGS",
+      "title": "Call settings",
+      "group": "System",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.SystemInquiredType.RESET_SETTINGS",
+      "title": "Reset settings",
+      "group": "System",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.SystemInquiredType.AUTO_VOLUME",
+      "title": "Auto volume",
+      "group": "System",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.SystemInquiredType.FACE_TAP_TEST_MODE",
+      "title": "Face tap test mode",
+      "group": "System",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.SystemInquiredType.SMART_TALKING_MODE_TYPE2",
+      "title": "Smart talking mode type2",
+      "group": "System",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.SystemInquiredType.QUICK_ACCESS",
+      "title": "Quick access",
+      "group": "System",
+      "status": "catalogued_not_implemented",
+      "category": "phone_or_service_dependency",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.SystemInquiredType.ASSIGNABLE_SETTINGS_WITH_LIMITATION",
+      "title": "Assignable settings with limitation",
+      "group": "System",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.SystemInquiredType.HEAD_GESTURE_ON_OFF",
+      "title": "Head gesture on off",
+      "group": "System",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.SystemInquiredType.HEAD_GESTURE_TRAINING",
+      "title": "Head gesture training",
+      "group": "System",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.UpdtInquiredType.FW_UPDATE_MTK_TRANSFER_WO_DISCONNECTION",
+      "title": "Fw update mtk transfer wo disconnection",
+      "group": "Updt",
+      "status": "catalogued_not_implemented",
+      "category": "firmware_updater_excluded",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.UpdtInquiredType.FW_UPDATE_MTK_TRANSFER_WO_DISCONNECTION_AUTO_UPDATE",
+      "title": "Fw update mtk transfer wo disconnection auto update",
+      "group": "Updt",
+      "status": "catalogued_not_implemented",
+      "category": "firmware_updater_excluded",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.UpdtInquiredType.FW_UPDATE_MTK_TRANSFER_WITH_REPAIR_MODE",
+      "title": "Fw update mtk transfer with repair mode",
+      "group": "Updt",
+      "status": "catalogued_not_implemented",
+      "category": "firmware_updater_excluded",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.UpdtInquiredType.FW_UPDATE_MTK_TRANSFER_WITH_AC_CONNECTION_CHECK",
+      "title": "Fw update mtk transfer with ac connection check",
+      "group": "Updt",
+      "status": "catalogued_not_implemented",
+      "category": "firmware_updater_excluded",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.UpdtInquiredType.FW_UPDATE_USING_MC_APP",
+      "title": "Fw update using mc app",
+      "group": "Updt",
+      "status": "catalogued_not_implemented",
+      "category": "firmware_updater_excluded",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.UpdtInquiredType.FW_UPDATE_TANDEM_PART1",
+      "title": "Fw update tandem part1",
+      "group": "Updt",
+      "status": "catalogued_not_implemented",
+      "category": "firmware_updater_excluded",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.UpdtInquiredType.FW_UPDATE_TANDEM_PART2",
+      "title": "Fw update tandem part2",
+      "group": "Updt",
+      "status": "catalogued_not_implemented",
+      "category": "firmware_updater_excluded",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.UpdtInquiredType.FW_UPDATE_TANDEM_PART3",
+      "title": "Fw update tandem part3",
+      "group": "Updt",
+      "status": "catalogued_not_implemented",
+      "category": "firmware_updater_excluded",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t1.UpdtInquiredType.FW_UPDATE_TANDEM_PART4",
+      "title": "Fw update tandem part4",
+      "group": "Updt",
+      "status": "catalogued_not_implemented",
+      "category": "firmware_updater_excluded",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t2.ConnectInquiredType.FIXED_VALUE",
+      "title": "Fixed value",
+      "group": "Connect",
+      "status": "catalogued_not_implemented",
+      "category": "protocol_or_telemetry",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t2.LEAInquiredType.LE_AUDIO_CONNECTION_STATE_NOTIFICATION",
+      "title": "Le audio connection state notification",
+      "group": "LEA",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t2.LEAInquiredType.LE_AUDIO_SWITCH_SUPPORTED_COMPATIBILITY",
+      "title": "Le audio switch supported compatibility",
+      "group": "LEA",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t2.LEAInquiredType.LE_AUDIO_CONNECTION_MODE_WITH_BT_RECONNECTION",
+      "title": "Le audio connection mode with bt reconnection",
+      "group": "LEA",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t2.LEAInquiredType.GET_IDENTITY_RESOLVING_KEY",
+      "title": "Get identity resolving key",
+      "group": "LEA",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t2.LEAInquiredType.PAS_SUPPORTS_A2DP_LEA_UNI_LEA_BROAD_WITH_CTKD",
+      "title": "Pas supports a2dp lea uni lea broad with ctkd",
+      "group": "LEA",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t2.LEAInquiredType.LINK_AUTO_SWITCH_CANT_BE_USED_WITH_LEA_CONNECTION",
+      "title": "Link auto switch cant be used with lea connection",
+      "group": "LEA",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t2.PartyInquiredType.DJ_CONTROL",
+      "title": "Dj control",
+      "group": "Party",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t2.PartyInquiredType.ILLUMINATION",
+      "title": "Illumination",
+      "group": "Party",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t2.PartyInquiredType.KARAOKE",
+      "title": "Karaoke",
+      "group": "Party",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t2.PartyInquiredType.DJ_CONTROL_WITH_STATUS_DISABLE_REASON",
+      "title": "Dj control with status disable reason",
+      "group": "Party",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t2.PartyInquiredType.KARAOKE_WITH_STATUS_DISABLE_REASON",
+      "title": "Karaoke with status disable reason",
+      "group": "Party",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t2.PartyInquiredType.LIVE_KARAOKE",
+      "title": "Live karaoke",
+      "group": "Party",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t2.PeripheralInquiredType.PAIRING_DEVICE_MANAGEMENT_CLASSIC_BT",
+      "title": "Pairing device management classic bt",
+      "group": "Peripheral",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t2.PeripheralInquiredType.SOURCE_SWITCH_CONTROL",
+      "title": "Source switch control",
+      "group": "Peripheral",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t2.PeripheralInquiredType.PAIRING_DEVICE_MANAGEMENT_WITH_BLUETOOTH_CLASS_OF_DEVICE",
+      "title": "Pairing device management with bluetooth class of device",
+      "group": "Peripheral",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t2.PeripheralInquiredType.MUSIC_HAND_OVER_SETTING",
+      "title": "Music hand over setting",
+      "group": "Peripheral",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t2.PowerInquiredType.AUTO_STANDBY",
+      "title": "Auto standby",
+      "group": "Power",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t2.PowerInquiredType.CARING_CHARGE_WITH_THRESHOLD",
+      "title": "Caring charge with threshold",
+      "group": "Power",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t2.PowerInquiredType.USB_SUBMERSION",
+      "title": "Usb submersion",
+      "group": "Power",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t2.SafeListeningInquiredType.SAFE_LISTENING_HBS_1",
+      "title": "Safe listening hbs 1",
+      "group": "SafeListening",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t2.SafeListeningInquiredType.SAFE_LISTENING_TWS_1",
+      "title": "Safe listening tws 1",
+      "group": "SafeListening",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t2.SafeListeningInquiredType.SAFE_LISTENING_HBS_2",
+      "title": "Safe listening hbs 2",
+      "group": "SafeListening",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t2.SafeListeningInquiredType.SAFE_LISTENING_TWS_2",
+      "title": "Safe listening tws 2",
+      "group": "SafeListening",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t2.SafeListeningInquiredType.SAFE_VOLUME_CONTROL",
+      "title": "Safe volume control",
+      "group": "SafeListening",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t2.SafeListeningInquiredType.MAX_VOL_LV_LIMIT",
+      "title": "Max vol lv limit",
+      "group": "SafeListening",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t2.SystemInquiredType.WEARING_STATUS_CHECKER",
+      "title": "Wearing status checker",
+      "group": "System",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t2.SystemInquiredType.REPEAT_TAP_TRAINING_MODE",
+      "title": "Repeat tap training mode",
+      "group": "System",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t2.SystemInquiredType.QUICK_ACCESS_EASY_SETTING",
+      "title": "Quick access easy setting",
+      "group": "System",
+      "status": "catalogued_not_implemented",
+      "category": "phone_or_service_dependency",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t2.SystemInquiredType.AUTO_VOLUME_OPTIMIZER",
+      "title": "Auto volume optimizer",
+      "group": "System",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t2.SystemInquiredType.AUTO_VOLUME_WITH_LIMITATION",
+      "title": "Auto volume with limitation",
+      "group": "System",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t2.SystemInquiredType.SONY_VOICE_ASSISTANT_SETTING_MTK_TRANSFER_SUPPORT_LANGUAGE_SWITCH",
+      "title": "Sony voice assistant setting mtk transfer support language switch",
+      "group": "System",
+      "status": "catalogued_not_implemented",
+      "category": "phone_or_service_dependency",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t2.SystemInquiredType.SONY_VOICE_ASSISTANT_COMMAND",
+      "title": "Sony voice assistant command",
+      "group": "System",
+      "status": "catalogued_not_implemented",
+      "category": "phone_or_service_dependency",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t2.SystemInquiredType.WEARING_DEVICE_INFORMATION",
+      "title": "Wearing device information",
+      "group": "System",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t2.SystemInquiredType.WEARING_POSITION_JUDGMENT_BY_SENSOR",
+      "title": "Wearing position judgment by sensor",
+      "group": "System",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t2.SystemInquiredType.LINK_AUTO_SWITCH_FOR_SPEAKER",
+      "title": "Link auto switch for speaker",
+      "group": "System",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t2.SystemInquiredType.LINK_AUTO_SWITCH_FOR_HEADSETS",
+      "title": "Link auto switch for headsets",
+      "group": "System",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t2.SystemInquiredType.MIC_ON_OFF_BY_HEADPHONE_OPERATION",
+      "title": "Mic on off by headphone operation",
+      "group": "System",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t2.SystemInquiredType.FUNCTION_CHANGE",
+      "title": "Function change",
+      "group": "System",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t2.SystemInquiredType.USB_BROWSER",
+      "title": "Usb browser",
+      "group": "System",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t2.SystemInquiredType.LIGHTING_MODE",
+      "title": "Lighting mode",
+      "group": "System",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t2.SystemInquiredType.VOICE_ASSISTANT_WITH_SPECIFIC_SETUP_LINK_SUPPORT",
+      "title": "Voice assistant with specific setup link support",
+      "group": "System",
+      "status": "catalogued_not_implemented",
+      "category": "phone_or_service_dependency",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t2.SystemInquiredType.LIGHTING_DEFAULT_COLOR_COLOR_TYPE",
+      "title": "Lighting default color color type",
+      "group": "System",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t2.SystemInquiredType.LIGHTING_DEFAULT_COLOR_CUSTOM_COLOR",
+      "title": "Lighting default color custom color",
+      "group": "System",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t2.VoiceGuidanceInquiredType.MTK_TRANSFER_WO_DISCONNECTION_NOT_SUPPORT_LANGUAGE_SWITCH",
+      "title": "Mtk transfer wo disconnection not support language switch",
+      "group": "VoiceGuidance",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t2.VoiceGuidanceInquiredType.MTK_TRANSFER_WO_DISCONNECTION_SUPPORT_LANGUAGE_SWITCH",
+      "title": "Mtk transfer wo disconnection support language switch",
+      "group": "VoiceGuidance",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t2.VoiceGuidanceInquiredType.SUPPORT_LANGUAGE_SWITCH",
+      "title": "Support language switch",
+      "group": "VoiceGuidance",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t2.VoiceGuidanceInquiredType.ONLY_ON_OFF_SETTING",
+      "title": "Only on off setting",
+      "group": "VoiceGuidance",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t2.VoiceGuidanceInquiredType.VOLUME",
+      "title": "Volume",
+      "group": "VoiceGuidance",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t2.VoiceGuidanceInquiredType.VOLUME_SETTING_FIXED_TO_5_STEPS",
+      "title": "Volume setting fixed to 5 steps",
+      "group": "VoiceGuidance",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t2.VoiceGuidanceInquiredType.BATTERY_LV_VOICE",
+      "title": "Battery lv voice",
+      "group": "VoiceGuidance",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t2.VoiceGuidanceInquiredType.POWER_ONOFF_SOUND",
+      "title": "Power onoff sound",
+      "group": "VoiceGuidance",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    },
+    {
+      "id": "v2t2.VoiceGuidanceInquiredType.SOUNDEFFECT_ULT_BEEP_ONOFF",
+      "title": "Soundeffect ult beep onoff",
+      "group": "VoiceGuidance",
+      "status": "catalogued_not_implemented",
+      "category": "headphone_control",
+      "reason": "Additional typed handler and model validation required"
+    }
+  ]
+}

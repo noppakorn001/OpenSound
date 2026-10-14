@@ -1,0 +1,35 @@
+{
+  "review_date": "2026-10-14",
+  "release": "OpenSound 0.4.0",
+  "files": {
+    "Sources/App/WFControl.swift": "dce93cb9f615d745bdcc93b5a6ad5ff068ae3c63f3977dbd91faa9721b7519c6",
+    "Sources/Core/WFProtocol.h": "560fceef9f3f1f723204cf1774aba373c0837f66c8453d1b173ec3770680e7ad",
+    "Sources/Core/WFProtocol.cpp": "bd70f00abac886cd7c02ff445eee87429beb72197df7937dfd3fa528e0a806e0",
+    "Sources/Native/WFBridge.h": "ff593307f6d524035899ddcbafcd8347aefedec7ef5b791a5a5f344eaaa59393",
+    "Sources/Native/WFBridge.mm": "444d076e58886bb55262a164139fba9411d48a93170c42685e63841346999bfa",
+    "Sources/Native/WFTransport.h": "3c087e31e80e636ced57dbb7a1b4a1257aec447921db396eecc25ceeaf656309",
+    "Sources/Native/WFTransport.mm": "7907c200aad56365128027e5ff54c586c6d1cf028935ceea5f0f410aa64ee534",
+    "Resources/Info.plist": "8977bd81c0b0c02dfbdfe48c1d680dd0625832438d0c425e2f3404d9d2b20d36",
+    "scripts/build.sh": "0b652116996c302ae434df303bc045192181a5fd8574fb25cd5921cb142dd06d",
+    "scripts/package-source.sh": "b5d645f8935208702e918813c820d075193f9daab280ed64e9aa112de27fc59f",
+    "scripts/security-test.sh": "e1ad2388bd54966caf04e59e10248c2279e055d3754415c7ad792c99a70b369f",
+    "tests/SecurityTests.cpp": "30baee38b92855c3940ee2da85025a06495d916e81f7c8dd06542e39e8e6f85d",
+    "tests/DiagnosticLogTests.mm": "899346c7e5a7df5c0620293fd5cb4f4dc85eaf34db392711b167e18b903e62fa",
+    ".github/workflows/build.yml": "ce37bdf753f8f76a7d9e0bb6837a24032dfed39f350480b43243a1ad9efd0302",
+    "Sources/App/ReconnectPolicy.swift": "89d7df15d6dbb1f42bf8d57c9ad0a7c87a31cbc8e3fa682475c61b0076c68992",
+    "tests/ReconnectPolicyTests.swift": "0c3f523eb08b39705d0bea716a6679275139e96f4e0810ffb85cdde5406f7a81",
+    "Sources/Native/SettingsRestorationTests.mm": "d808e10ef84301bfa4958efb99df0eb635c8979d32a83903333352463e47abe5",
+    "scripts/settings-hardware-test.sh": "b957dcf577357a52fd821854417c908180fc20fa2e97f2f3a7a9c0df23f74ae3"
+  },
+  "tests": {
+    "protocol_sanitizer_checks": 423,
+    "malformed_input_cases": 100000,
+    "diagnostic_log_regression": "passed",
+    "feature_catalogue_tests": 8,
+    "isolated_public_source_optional_regeneration": "skipped without reference checkout",
+    "clang_analyzer_diagnostics": 0,
+    "wf1000xm4_core_bridge_regression": "8 steps passed and restored",
+    "reconnect_policy": "passed"
+  },
+  "independent_security_review": false
+}

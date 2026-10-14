@@ -1,0 +1,10 @@
+The active icon is the user-supplied Colorful Geometric Cow Logo.png,
+selected on 2026-10-14 and copied without visual edits.
+macOS sips and iconutil create size variants for the app bundle.
+
+The following prompt records the superseded headphone concept,
+generated with the built-in image_gen tool on 2026-10-14.
+
+Use case: logo-brand
+Asset type: macOS app icon for MDR Harbor, an independent open-source Sony headphone controller
+Primary request: create one polished original square macOS application icon. A sculptural over-ear headphone silhouette whose inner opening contains three simple equalizer bars, expressing audio control. Subtle high-end dimensional brushed dark graphite form, softly glowing pale lavender ear cushions and equalizer bars. Dark charcoal rounded-square tile, generous clean margins, centered symmetrical mark, gentle studio lighting and restrained tactile depth. Recognizable at 32 pixels. The entire rounded-square tile fits inside the canvas with clean transparent space outside it. No text, letters, logos, trademark emblems, recognizable Sony product design, or watermark. Only one icon; not a presentation or icon sheet.
