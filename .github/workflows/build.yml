@@ -1,0 +1,28 @@
+name: Build and test
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  macos:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Public source and history privacy guard
+        run: python3 scripts/check-public-privacy.py
+      - name: Protocol tests with sanitizers
+        run: bash scripts/test.sh
+      - name: Feature catalogue validation
+        run: python3 tests/FeatureCatalogTests.py
+      - name: Security regression tests
+        run: bash scripts/security-test.sh
+      - name: Build Apple Silicon app
+        run: bash scripts/build.sh
+      - name: Archive app with executable permissions
+        run: ditto -c -k --sequesterRsrc --keepParent dist/OpenSound.app dist/OpenSound-macos-arm64.zip
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: OpenSound-macos-arm64
+          path: dist/OpenSound-macos-arm64.zip

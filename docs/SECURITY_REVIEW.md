@@ -33,6 +33,7 @@ No exploitable critical or high-severity issue was established during this revie
 - Bundle checks: strict code-sign verification, ad-hoc+hardened-runtime flags, ARM64 PIE executable, system-only dylib references, no permissive signing entitlements.
 - Real-device regression and Menu Bar lifecycle evidence are recorded separately in `RELEASE_VALIDATION.json`; successful prior tests are distinguished from newly repeated checks.
 - Source archive uses a fixed source allowlist and excludes IPA, extracted files, private captures, development tools, vendor/reference checkouts and compiled output.
+- Publication privacy guard scans tracked files and reachable Git history, rejects flagged PNG text/EXIF metadata and requires no-reply commit emails. Public screenshots were visually reviewed with paired-device names collapsed. See `PUBLICATION_PRIVACY.md` for limits and the pre-push hook.
 
 ## Remaining limits
 
@@ -42,7 +43,7 @@ No exploitable critical or high-severity issue was established during this revie
 4. Diagnostic data is plaintext, opt-in, owner-only and size-bounded; there is no encrypted storage or automatic retention policy. Top-level existing local analysis JSON/captures/screenshots were changed to mode 0600 during this review, but historical contents were not retroactively sanitized. Only the allowlisted source archive is suitable for public review.
 5. Fuzzing is bounded and deterministic, not exhaustive or coverage-guided. No long-running RF adversarial test, independent audit, compromised-headset test, macOS Bluetooth penetration test or formal verification was performed.
 6. Actual hardware validation covers one WF-1000XM4 firmware 2.3.1 unit. Unsupported layouts fail closed, but additional typed handlers and other model firmware need separate tests. Right-touch reassignment still has failed readback and must not be described as working.
-7. Connection quality, automatic power-off, multipoint and assistant changes have implemented paths but not confirmed write/restoration tests on this device. Volume/EQ changes require user action; the app does not automatically increase volume or adjust sound on startup.
+7. Connection quality and automatic power-off writes/readbacks/restorations passed on this device. Multipoint changes were not confirmed; source switching reported A2DP/calling rejection conditions. A later audio-ready retry stopped before writes because Bluetooth was unavailable. Assistant changes are not write-tested. Volume/EQ changes require user action; the app does not automatically increase volume or adjust sound on startup.
 8. All-model BLE/LE Audio transport, safe listening, activity/location policies, Sony cloud/account and firmware workflows are absent or excluded; no device safety policy is implied by these missing controls.
 
 The official Action refs used for CI pins were read from GitHub on the review date: checkout `11d5960a326750d5838078e36cf38b85af677262`, upload-artifact `ea165f8d65b6e75b540449e92b4886f43607fa02`. Protocol reference remains SonyHeadphonesClient `f11d686332e9aaf7630f9fb8a104b70c5d6f342c` and SonyBridge `8c81a2775a76097f4938fbc835411bd59088014c`, with retained MIT notices.

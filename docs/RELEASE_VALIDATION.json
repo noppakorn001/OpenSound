@@ -205,6 +205,21 @@
   "reconnect_validation": {
     "pure_policy_regression": "passed; backoff, sleep/wake, duplicate retry prevention, disable and manual-disconnect behavior",
     "physical_mac_sleep_wake": "not performed",
-    "live_session_recovery": "pending final UI test"
+    "live_session_recovery": "Not confirmed; final live retry could not open Bluetooth transport"
+  },
+  "multipoint_audio_retry": {
+    "status": "blocked before settings writes",
+    "reason": "macOS reported Bluetooth off or unavailable",
+    "settings_changed": false,
+    "source_switch_confirmed": false
+  },
+  "publication_privacy": {
+    "tracked_files_and_reachable_history": "passed",
+    "commit_email": "GitHub no-reply",
+    "png_text_and_exif": "none",
+    "screenshots": "visually reviewed; paired-device names collapsed",
+    "local_pre_push_guard": "enabled in maintainer checkout",
+    "ci_guard": "configured with full Git history",
+    "limits": "heuristic scan; not a guarantee or an independent audit"
   }
 }

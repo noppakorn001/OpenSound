@@ -45,6 +45,7 @@ Requires Apple Silicon, macOS 14 or later, and Xcode with the Swift / C++ toolch
 ./scripts/test.sh
 python3 tests/FeatureCatalogTests.py
 bash scripts/security-test.sh
+python3 scripts/check-public-privacy.py
 ```
 
 The build uses local ad-hoc signing. Neither Node, Java, Ghidra, PlayCover, the IPA, nor a paid developer account is needed to build or run. The included ICNS icon is ready to build; `scripts/build-icon.sh` regenerates it from the original PNG using macOS tools.
@@ -56,6 +57,8 @@ The build uses local ad-hoc signing. Neither Node, Java, Ghidra, PlayCover, the 
 See [CONTRIBUTING.md](CONTRIBUTING.md). Protocol fixtures, model reports, and patches for missing capability formats are welcome. Include exact model, firmware, protocol table, advertised functions, and reproducible readback evidence; omit Bluetooth addresses and personal information. Public feature metadata is in `docs/feature-catalog.json`; its provenance and limitations are described in [REVERSE_ENGINEERING.md](docs/REVERSE_ENGINEERING.md).
 
 `scripts/package-source.sh` produces an allowlisted source archive without the IPA, extracted files, raw captures, device addresses, development tools, vendor checkouts, or app binaries. It also creates a clean source directory under `dist`. The research workspace must not be published wholesale.
+
+The [publication privacy guard](docs/PUBLICATION_PRIVACY.md) checks tracked files, reachable Git history, image metadata and commit email addresses. Enable the local pre-push check with `git config --local core.hooksPath .githooks`. Review screenshots manually as well; automated checks do not recognize every possible personal detail.
 
 MIT license; third-party attribution is retained in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). OpenSound is not affiliated with Sony. The active app icon is the colorful geometric cow logo selected and supplied by the project owner. Asset provenance is retained in `Resources/Icon/PROMPT.txt`. Device product renders match known models; their source is documented in `Resources/Devices/NOTICE.md`. No assets extracted from the supplied IPA are included.
 

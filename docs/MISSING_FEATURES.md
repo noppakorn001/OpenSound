@@ -9,7 +9,9 @@ Audited 2026-10-14 against the implemented runtime, the pinned four-table protoc
 | Battery, ANC/Ambient/Off, basic EQ and Clear Bass | Implemented and physically tested | Broader disconnect/in-case and firmware coverage |
 | DSEE, wearing pause, Speak-to-Chat options, left-touch assignment, guidance toggle, headphone volume | Implemented; nine additional writes/readbacks/restorations passed | Longer-running usage and more firmware/model tests |
 | Right touch assignment | Advertised choices and current state visible; writes not confirmed | Resolve actual command/workflow behavior. Both keys reported enabled; retry with both earbuds worn and temporary left Volume assignment still failed; original values restored |
-| Connection quality, automatic power-off, multipoint, assistant selector | Implemented; reads available | Confirm actual writes and restoration, including connection-loss/reconnect behavior |
+| Connection quality and automatic power-off | Writes/readbacks/restorations passed on the test unit | More model/firmware and connection-loss coverage |
+| Multipoint and source switching | Reads available; writes were not confirmed and original values retained | Resolve headset rejection conditions and verify during actual A2DP playback; latest retry stopped before writes because Bluetooth was unavailable |
+| Assistant selector | Advertised control and reads available | Actual write/readback/restoration testing |
 | Ear-tip fitting and wearing setup | No end-to-end UI | Capability binding, start/status/result sequence, hardware testing |
 | Adaptive Sound Control | No Mac policy engine | Activity/location rules, permissions, privacy policy and safe automatic-change workflow |
 | 360 Reality Audio personalization / head-tracking services | No complete native workflow | Model capability handling plus required platform/service integration; do not equate EQ with spatial audio |

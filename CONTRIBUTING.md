@@ -1,5 +1,7 @@
 # Contributing
 
+Use a GitHub no-reply commit email and run `python3 scripts/check-public-privacy.py` before pushing. Enable the local guard with `git config --local core.hooksPath .githooks`. See [publication privacy](docs/PUBLICATION_PRIVACY.md) for the checks and their limitations.
+
 Build with `scripts/build.sh`, run `scripts/test.sh`, and run `python3 tests/FeatureCatalogTests.py`. Keep all visible app strings in English. The portrait interface and capability-based controls are intentional.
 
 For a new headphone model, report its model and firmware, selected MDR protocol table, advertised support identifiers, successful reads, failed reads, and changes confirmed by readback. A transport ACK alone does not prove that a setting was accepted. Test restoration of the original settings. Do not claim all-model compatibility from a device name or static declaration.

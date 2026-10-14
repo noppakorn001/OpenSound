@@ -8,6 +8,8 @@
 - Continue connection monitoring while an EQ draft is open; reconnect does not replay old ANC/EQ values.
 - Close a stalled control session after mandatory reads fail so reconnect can establish a fresh session.
 - Prepare the public source repository with MIT notices, CI, contribution/security policies, issue templates and an explicit compatibility matrix.
+- Add the cow logo and four real interface screenshots to the README and interface guide.
+- Check public files, reachable Git history, PNG metadata and commit emails with a local pre-push hook and CI privacy guard.
 
 ## 0.3.0
 

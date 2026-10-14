@@ -11,15 +11,17 @@
     "Sources/Native/WFTransport.mm": "7907c200aad56365128027e5ff54c586c6d1cf028935ceea5f0f410aa64ee534",
     "Resources/Info.plist": "8977bd81c0b0c02dfbdfe48c1d680dd0625832438d0c425e2f3404d9d2b20d36",
     "scripts/build.sh": "0b652116996c302ae434df303bc045192181a5fd8574fb25cd5921cb142dd06d",
-    "scripts/package-source.sh": "b5d645f8935208702e918813c820d075193f9daab280ed64e9aa112de27fc59f",
+    "scripts/package-source.sh": "31ff4b16b9cfa281e1f243079664c56b230a9d5041fbf2a538165766f2226915",
     "scripts/security-test.sh": "e1ad2388bd54966caf04e59e10248c2279e055d3754415c7ad792c99a70b369f",
     "tests/SecurityTests.cpp": "30baee38b92855c3940ee2da85025a06495d916e81f7c8dd06542e39e8e6f85d",
     "tests/DiagnosticLogTests.mm": "899346c7e5a7df5c0620293fd5cb4f4dc85eaf34db392711b167e18b903e62fa",
-    ".github/workflows/build.yml": "ce37bdf753f8f76a7d9e0bb6837a24032dfed39f350480b43243a1ad9efd0302",
+    ".github/workflows/build.yml": "be835881196c92d3855bdd2e8cf60ea8c7b8d381f37b0a8f80d06aa0e09da9fa",
     "Sources/App/ReconnectPolicy.swift": "89d7df15d6dbb1f42bf8d57c9ad0a7c87a31cbc8e3fa682475c61b0076c68992",
     "tests/ReconnectPolicyTests.swift": "0c3f523eb08b39705d0bea716a6679275139e96f4e0810ffb85cdde5406f7a81",
     "Sources/Native/SettingsRestorationTests.mm": "d808e10ef84301bfa4958efb99df0eb635c8979d32a83903333352463e47abe5",
-    "scripts/settings-hardware-test.sh": "b957dcf577357a52fd821854417c908180fc20fa2e97f2f3a7a9c0df23f74ae3"
+    "scripts/settings-hardware-test.sh": "b957dcf577357a52fd821854417c908180fc20fa2e97f2f3a7a9c0df23f74ae3",
+    "scripts/check-public-privacy.py": "b7881b8f14415ab40478320fd45f37e8f9af53c9ea9b7985e1dd09f44b37d7e1",
+    ".githooks/pre-push": "cfb88b03087d4417e0c1d0152aedbb3a2aaf06583e3b4af433045bc056ea1596"
   },
   "tests": {
     "protocol_sanitizer_checks": 423,
