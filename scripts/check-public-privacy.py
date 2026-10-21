@@ -18,8 +18,8 @@ RULES = {
     "private key": rb"-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----",
     "access token": rb"(?:gh[pousr]_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{20,}|sk-[A-Za-z0-9]{20,}|AKIA[0-9A-Z]{16})",
 }
-PRIVATE_DIRS = {"analysis", "tools", "vendor", "github-auth", ".aws", ".ssh", "build", "dist"}
-PRIVATE_SUFFIXES = {".ipa", ".jsonl", ".pem", ".key", ".p12", ".mobileprovision"}
+PRIVATE_DIRS = {"analysis", "tools", "vendor", "github-auth", ".aws", ".ssh", "build", "dist", "__pycache__"}
+PRIVATE_SUFFIXES = {".ipa", ".jsonl", ".pem", ".key", ".p12", ".mobileprovision", ".pyc", ".pyo"}
 
 
 def git(*args):
@@ -37,7 +37,7 @@ def check(name, data):
                 issues.append("PNG text/EXIF metadata requires manual review")
             offset += length + 12
     path = pathlib.PurePosixPath(name)
-    if PRIVATE_DIRS.intersection(path.parts) or path.suffix.lower() in PRIVATE_SUFFIXES or path.name in {".DS_Store", ".env", "hosts.yml"}:
+    if PRIVATE_DIRS.intersection(path.parts) or path.suffix.lower() in PRIVATE_SUFFIXES or path.name in {".DS_Store", ".env", "hosts.yml"} or (path.name.startswith(".env.") and path.name != ".env.example"):
         issues.append("private artifact path")
     return issues
 
@@ -51,6 +51,18 @@ def main():
             findings.add((name, "symlink requires manual review"))
         elif path.is_file():
             findings.update((name, rule) for rule in check(name, path.read_bytes()))
+    # Inspect staged blobs too: cleaning a working file does not clean its index entry.
+    for record in git("ls-files", "--stage", "-z").decode().split("\0")[:-1]:
+        metadata, name = record.split("\t", 1)
+        mode, oid, stage = metadata.split()
+        if mode == "120000":
+            findings.add((f"index:{name}", "symlink requires manual review"))
+        elif mode in {"100644", "100755"}:
+            findings.update((f"index:{name}", rule) for rule in check(name, git("cat-file", "blob", oid)))
+        else:
+            findings.add((f"index:{name}", "unsupported index mode requires manual review"))
+        if stage != "0":
+            findings.add((f"index:{name}", "unresolved merge requires review"))
     # Git history can expose data even after the working copy has been cleaned.
     # Scan each unique reachable blob once, not just the current checkout.
     objects = git("rev-list", "--objects", "--all").decode().splitlines()
@@ -71,7 +83,7 @@ def main():
     if findings:
         print("Privacy guard blocked publication. Review locally; never paste matched data into an issue.", file=sys.stderr)
         return 1
-    print(f"Privacy guard passed: {len(tracked)} tracked files, {blobs} reachable blobs, no flagged metadata or commit emails.")
+    print(f"Privacy guard passed: {len(tracked)} tracked files and staged blobs, {blobs} reachable blobs, no flagged metadata or commit emails.")
     return 0
 
 

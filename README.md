@@ -42,12 +42,15 @@ WF-1000XM4 firmware 2.3.1 is the physical test device. Discovery and protocol se
 
 ## Build and test
 
+New contributors: follow the [development guide](docs/DEVELOPMENT.md) for a clean build, source map, checks and release packaging.
+
 Requires Apple Silicon, macOS 14 or later, and Xcode with the Swift / C++ toolchain.
 
 ```sh
 ./scripts/build.sh
 ./scripts/test.sh
 python3 tests/FeatureCatalogTests.py
+python3 tests/SourceExportTests.py
 bash scripts/security-test.sh
 python3 scripts/check-public-privacy.py
 bash scripts/package-dmg.sh
@@ -59,12 +62,16 @@ The build uses local ad-hoc signing. Neither Node, Java, Ghidra, PlayCover, the 
 
 ## Contribute
 
-See [CONTRIBUTING.md](CONTRIBUTING.md). Protocol fixtures, model reports, and patches for missing capability formats are welcome. Include exact model, firmware, protocol table, advertised functions, and reproducible readback evidence; omit Bluetooth addresses and personal information. Public feature metadata is in `docs/feature-catalog.json`; its provenance and limitations are described in [REVERSE_ENGINEERING.md](docs/REVERSE_ENGINEERING.md).
+See the [open-source readiness review](docs/OPEN_SOURCE_READINESS.md) for verified build/export checks and the remaining artwork limitation.
+
+You can [fork this repository](https://github.com/noppakorn001/OpenSound/fork), modify the MIT-licensed code and submit a pull request without asking permission. See [CONTRIBUTING.md](CONTRIBUTING.md), [support](SUPPORT.md) and [community conduct](CODE_OF_CONDUCT.md). Protocol fixtures, model reports, and patches for missing capability formats are welcome. Include exact model, firmware, protocol table, advertised functions, and reproducible readback evidence; omit Bluetooth addresses and personal information. Public feature metadata is in `docs/feature-catalog.json`; its provenance and limitations are described in [REVERSE_ENGINEERING.md](docs/REVERSE_ENGINEERING.md).
 
 `scripts/package-source.sh` produces an allowlisted source archive without the IPA, extracted files, raw captures, device addresses, development tools, vendor checkouts, or app binaries. It also creates a clean source directory under `dist`. The research workspace must not be published wholesale.
 
 The [publication privacy guard](docs/PUBLICATION_PRIVACY.md) checks tracked files, reachable Git history, image metadata and commit email addresses. Enable the local pre-push check with `git config --local core.hooksPath .githooks`. Review screenshots manually as well; automated checks do not recognize every possible personal detail.
 
-MIT license; third-party attribution is retained in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). OpenSound is not affiliated with Sony. The active app icon is the colorful geometric cow logo selected and supplied by the project owner. Asset provenance is retained in `Resources/Icon/PROMPT.txt`. Device product renders match known models; their source is documented in `Resources/Devices/NOTICE.md`. No assets extracted from the supplied IPA are included.
+**License scope:** Original code, documentation and the owner-provided cow logo are MIT-licensed. **Sony product-render redistribution rights remain unconfirmed**, including their depiction in screenshots; those images are excluded from the MIT grant and retained at the owner's request. Forks can omit them with `OPENSOUND_DEVICE_IMAGES=none bash scripts/build.sh`. Read [licensing and artwork](docs/LICENSING.md) before redistributing artwork.
+
+Third-party attribution is retained in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). OpenSound is not affiliated with Sony. The active app icon is the colorful geometric cow logo selected and supplied by the project owner. Asset provenance is retained in `Resources/Icon/PROMPT.txt`. Device product renders match known models; their source is documented in `Resources/Devices/NOTICE.md`. No assets extracted from the supplied IPA are included.
 
 Read the [missing features audit](docs/MISSING_FEATURES.md), [security review](docs/SECURITY_REVIEW.md) and [security policy](SECURITY.md). This OpenSound headphone app is separate from existing projects using the same name, including [opensound-org/opensound](https://github.com/opensound-org/opensound) and [luckyshot/OpenSound](https://github.com/luckyshot/OpenSound).

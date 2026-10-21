@@ -18,6 +18,10 @@ jobs:
         run: python3 tests/FeatureCatalogTests.py
       - name: Security regression tests
         run: bash scripts/security-test.sh
+      - name: Public source export regression tests
+        run: python3 tests/SourceExportTests.py
+      - name: Export source without Sony imagery
+        run: OPENSOUND_DEVICE_IMAGES=none bash scripts/package-source.sh
       - name: Build Apple Silicon app
         run: bash scripts/build.sh
       - name: Archive app with executable permissions

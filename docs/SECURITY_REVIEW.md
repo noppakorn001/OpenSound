@@ -2,6 +2,8 @@
 
 Review date: 2026-10-14. Scope: current SwiftUI UI, Objective-C++ bridge and IOBluetooth transport, C++ framing/parsers/writers, app bundle, build scripts, source packaging, and CI configuration. This is a source and local-runtime review by the implementation agent, not an independent penetration test or certification. Sony firmware, macOS Bluetooth internals, proprietary cloud APIs and the full IPA binary are outside this security review.
 
+The dated review and `SECURITY_AUDIT_MANIFEST.json` describe the 0.4.1 snapshot. Subsequent build/export/community changes are not retroactively covered by those hashes. The 2026-10-21 contribution update adds staged-blob privacy checks and tracked-file-only source exports with regression tests; see the Git history and CI for that change's validation.
+
 ## Threat model and data flow
 
 The main untrusted input is Bluetooth data from a paired device, including packet sizes, enums, counted arrays, model strings, setting labels and pairing history. Commands pass from the English UI through a serial bridge worker to a discovered Sony RFCOMM service; decoded device data returns to the main thread. Both protocol tables use bounded frames and explicit reply opcode/inquiry matching. The device remains the authority for setting readback.

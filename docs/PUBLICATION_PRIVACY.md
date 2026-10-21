@@ -6,10 +6,14 @@ The project owner's GitHub username is intentionally public as the repository ow
 
 ## Before publishing changes
 
-Run `python3 scripts/check-public-privacy.py` before pushing. It checks tracked working files, every reachable Git blob and author/committer emails. Errors identify the file and rule, never the matched private value. New contributors should use their GitHub no-reply commit email. Any intentional public attribution that triggers a rule requires a documented manual review before changing the guard.
+Run `python3 scripts/check-public-privacy.py` before pushing. It checks tracked working files, staged Git blobs, every reachable Git blob and author/committer emails. Errors identify the file and rule, never the matched private value. New contributors should use their GitHub no-reply commit email. Any intentional public attribution that triggers a rule requires a documented manual review before changing the guard.
 
 Enable the local pre-push guard with `git config --local core.hooksPath .githooks`. CI repeats the check with full Git history. CI runs after publication; the local hook is the check that prevents a push. The hook and scanner are heuristics, so visually review every new screenshot and inspect new formats for metadata as well.
 
 Do not commit the IPA, extracted app files, raw Bluetooth captures, paired-device names, authentication configuration, development tools or device-specific research reports. Keep those outside this public checkout. The source packager uses an allowlist; diagnostics and build output are excluded. Never share tokens or unredacted captures in issues.
 
 If private information is discovered after publishing, deleting the current file is insufficient: history, forks and caches can retain it. Revoke any exposed credential first and coordinate history cleanup. Do not reproduce the sensitive data in a public report.
+
+## Source exports
+
+The source packager uses the Git tracked-file list and a public-directory allowlist, then applies the privacy rules to each selected file before exporting. Untracked local files cannot enter the archive, even if they sit under `docs` or `Resources`. Symlinks and directory symlinks are rejected. New files must be intentionally staged before packaging. Archives contain `SOURCE_MANIFEST.txt` for building and re-exporting without Git; it is validated by the same path and privacy checks. Image-free exports also omit Sony renders and interface screenshots. This does not replace manual review of tracked images or hidden data in other file formats.

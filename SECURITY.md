@@ -2,7 +2,7 @@
 
 OpenSound is a local, unofficial headphone controller. It trusts macOS Bluetooth pairing and only issues implemented, capability-gated commands. It has no Sony account login, web client, telemetry uploader, firmware flasher, elevated helper, or automatic update installer.
 
-Report vulnerabilities privately to the repository maintainer using the hosting provider's private vulnerability reporting feature when available. Include the affected revision, model/firmware, minimal sanitized fixture, expected behavior and observed impact. Never attach account secrets, the proprietary IPA, Bluetooth addresses or unredacted pairing history. The project has not published a contact address or guaranteed response SLA.
+Report vulnerabilities privately through [GitHub private vulnerability reporting](https://github.com/noppakorn001/OpenSound/security/advisories/new). Include the affected revision, model/firmware, minimal sanitized fixture, expected behavior and observed impact. Never attach account secrets, the proprietary IPA, Bluetooth addresses or unredacted pairing history. The project has not published a contact address or guaranteed response SLA.
 
 Run `bash scripts/security-test.sh` to exercise malformed input with AddressSanitizer/UndefinedBehaviorSanitizer and the diagnostic log protections. Read [the security review](docs/SECURITY_REVIEW.md) for findings, fixes and remaining limits.
 

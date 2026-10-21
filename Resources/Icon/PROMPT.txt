@@ -1,6 +1,9 @@
 The active icon is the user-supplied Colorful Geometric Cow Logo.png,
 selected on 2026-10-14 and copied without visual edits.
 macOS sips and iconutil create size variants for the app bundle.
+On 2026-10-21 the project owner confirmed they generated this logo with GPT,
+have the rights to license it, and permit its use under the project MIT license.
+See docs/LICENSING.md for licensing scope and the separate Sony artwork status.
 
 The following prompt records the superseded headphone concept,
 generated with the built-in image_gen tool on 2026-10-14.

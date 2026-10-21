@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased
+
+- Add a complete fork/contribution workflow, developer source map, support and community policies.
+- Clarify MIT licensing for code and the owner-generated cow logo, and the unconfirmed rights of Sony product renders.
+- Avoid stale Swift module-cache paths after moving a checkout.
+- Support builds and source exports without Sony product imagery.
+- Export only tracked, allowlisted, privacy-checked source files and add export regression tests.
+
 ## 0.4.1
 
 - Edit left/right button and touch actions together, then apply one complete preset list.

@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Report a security vulnerability privately
+    url: https://github.com/noppakorn001/OpenSound/security/advisories/new
+    about: Do not report vulnerabilities or secrets in public issues.
+  - name: Development and contribution guide
+    url: https://github.com/noppakorn001/OpenSound/blob/main/CONTRIBUTING.md
+    about: Fork, build, test and submit a pull request.

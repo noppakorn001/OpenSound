@@ -11,3 +11,7 @@ owners; the code license is not a claim of ownership of that material.
 The interface selects an image by a matching reported model or device name.
 Image availability does not imply that a model's controls are hardware tested.
 The cow application icon is a separate, user-supplied asset.
+
+Redistribution rights for these product renders remain unconfirmed. They are
+not included in OpenSound's MIT grant. Retained at the owner's request; see
+`docs/LICENSING.md` for omission options and the screenshot limitation.
