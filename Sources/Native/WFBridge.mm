@@ -2,6 +2,7 @@
 #import "WFTransport.h"
 #include <stdexcept>
 #include <algorithm>
+#include <atomic>
 
 static IOBluetoothSDPUUID *sonyUUID(NSString *text) { uuid_t bytes; [[[NSUUID alloc] initWithUUIDString:text] getUUIDBytes:bytes]; return [IOBluetoothSDPUUID uuidWithBytes:bytes length:16]; }
 static NSString *safeText(const std::string& value,NSString *fallback) {
@@ -13,7 +14,7 @@ static NSString *safeText(const std::string& value,NSString *fallback) {
 @implementation WFBridge {
     NSThread *_thread;
     WFTransport *_transport;
-    BOOL _stopping;
+    std::atomic<bool> _stopping;
     NSArray<NSNumber *> *_presets;
     int _maxAmbient;
     BOOL _supportsEditor;
@@ -26,12 +27,12 @@ static NSString *safeText(const std::string& value,NSString *fallback) {
     std::vector<wf::SettingSpec> _specs;
     std::vector<wf::AssignmentKey> _assignmentKeys;
     NSMutableDictionary *_settingRows,*_settingReplies;
-    BOOL _acceptingWork;
+    BOOL _acceptingWork, _draining;
 }
 - (instancetype)init {
     if((self=[super init])) {
         _work=[NSMutableArray new]; _settingRows=[NSMutableDictionary new]; _settingReplies=[NSMutableDictionary new];
-        _acceptingWork=YES;
+        _acceptingWork=YES; _stopping=false;
         _thread=[[NSThread alloc] initWithTarget:self selector:@selector(worker) object:nil];
         _thread.name=@"OpenSound Bluetooth"; [_thread start];
     }
@@ -42,20 +43,37 @@ static NSString *safeText(const std::string& value,NSString *fallback) {
         [[NSRunLoop currentRunLoop] addPort:[NSMachPort port] forMode:NSDefaultRunLoopMode];
         @synchronized(_work) { _transport=[WFTransport new]; }
         _presets=@[];
-        while(!_stopping) { @autoreleasepool {
-            void (^next)(void)=nil;
-            @synchronized(_work) {
-                if(_work.count) { next=_work.firstObject; [_work removeObjectAtIndex:0]; }
-            }
-            if(next) next();
-            [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
+        [self drain];
+        // Sleep in the run loop until IOBluetooth delivers an event or enqueue
+        // wakes this thread; no periodic timer wakeups while idle.
+        while(!_stopping.load()) { @autoreleasepool {
+            [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:NSDate.distantFuture];
         }}
         [_transport close]; @synchronized(_work) { _transport=nil; }
     }
 }
-- (void)execute:(void (^)(void))block { block(); }
+- (void)drain {
+    // Transport waits spin the run loop, which can deliver another wake-up
+    // while a block is running; the outer drain picks queued work up instead.
+    if(_draining) return;
+    _draining=YES;
+    for(;;) {
+        void (^next)(void)=nil;
+        @synchronized(_work) {
+            if(_work.count) { next=_work.firstObject; [_work removeObjectAtIndex:0]; }
+        }
+        if(!next) break;
+        @autoreleasepool { next(); }
+    }
+    _draining=NO;
+}
+- (void)wake {
+    if(_thread && !_thread.finished) [self performSelector:@selector(drain) onThread:_thread withObject:nil waitUntilDone:NO];
+}
 - (void)enqueue:(void (^)(void))block {
-    @synchronized(_work) { if(_acceptingWork) [_work addObject:[block copy]]; }
+    BOOL queued=NO;
+    @synchronized(_work) { if(_acceptingWork) { [_work addObject:[block copy]]; queued=YES; } }
+    if(queued) [self wake];
 }
 - (void)finish:(WFCompletion)completion error:(NSString *)error {
     if(!_transport.connected) [_settingRows removeAllObjects];
@@ -205,6 +223,14 @@ static NSString *safeText(const std::string& value,NSString *fallback) {
     [self enqueue:^{
         NSString *error=nil;
         try { [self readStatus:YES]; [self refreshSettings]; }
+        catch(const std::exception& e) { error=@(e.what()); [self->_transport close]; }
+        [self finish:completion error:error];
+    }];
+}
+- (void)pollStatus:(WFCompletion)completion {
+    [self enqueue:^{
+        NSString *error=nil;
+        try { [self readStatus:YES]; }
         catch(const std::exception& e) { error=@(e.what()); [self->_transport close]; }
         [self finish:completion error:error];
     }];
@@ -471,7 +497,8 @@ static NSString *safeText(const std::string& value,NSString *fallback) {
             }
         } catch(const std::exception& e) {
             error=@(e.what());
-            if([error containsString:@"timed out"] || [error containsString:@"Disconnected"] || [error containsString:@"closed"] || [error containsString:@"No valid current setting"] ) {
+            // A lost link or an unusable current value makes the row untrustworthy.
+            if(dynamic_cast<const wf::LinkError*>(&e) || dynamic_cast<const std::invalid_argument*>(&e)) {
                 NSMutableDictionary *row=[self->_settingRows[identifier] mutableCopy];
                 if(row) {row[@"enabled"]=@NO;row[@"value"]=NSNull.null;row[@"reason"]=error;self->_settingRows[identifier]=row;}
             }
@@ -482,7 +509,7 @@ static NSString *safeText(const std::string& value,NSString *fallback) {
 - (void)disconnect:(WFCompletion)completion {
     [self enqueue:^{ [self->_transport close]; self->_presets=@[]; [self->_settingRows removeAllObjects]; self->_functions.clear(); self->_specs.clear(); [self finish:completion error:nil]; }];
 }
-- (void)stopWorker { [_transport close]; _stopping=YES; }
+- (void)stopWorker { [_transport close]; _stopping=true; }
 - (void)shutdown {
     if(!_thread || _thread.finished) return;
     @synchronized(_work) {
@@ -492,6 +519,7 @@ static NSString *safeText(const std::string& value,NSString *fallback) {
         __weak WFBridge *weakSelf=self;
         [_work addObject:[^{ [weakSelf stopWorker]; } copy]];
     }
+    [self wake];
     NSDate *deadline=[NSDate dateWithTimeIntervalSinceNow:2];
     while(!_thread.finished && deadline.timeIntervalSinceNow>0) [NSThread sleepForTimeInterval:0.01];
 }

@@ -5,6 +5,8 @@ typedef void (^WFCompletion)(NSDictionary * _Nullable snapshot, NSString * _Null
 - (void)listDevices:(void (^)(NSArray<NSDictionary *> *devices))completion;
 - (void)connectAddress:(NSString *)address completion:(WFCompletion)completion;
 - (void)refresh:(WFCompletion)completion;
+/// Cheap periodic read: battery, ambient and EQ only; cached settings are not re-read.
+- (void)pollStatus:(WFCompletion)completion;
 - (void)setSetting:(NSString *)identifier value:(id)value completion:(WFCompletion)completion;
 - (void)setTouchAssignments:(NSDictionary<NSString *,NSNumber *> *)values completion:(WFCompletion)completion;
 - (void)setMode:(NSString *)mode level:(NSInteger)level voice:(BOOL)voice completion:(WFCompletion)completion;

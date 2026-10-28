@@ -17,6 +17,7 @@ static NSString *hex(const wf::Bytes& bytes) {
     return text;
 }
 static void fail(NSString *message) { throw std::runtime_error(message.UTF8String); }
+static void failLink(NSString *message) { throw wf::LinkError(message.UTF8String); }
 
 @implementation WFTransport {
     IOBluetoothDevice *_device;
@@ -118,7 +119,10 @@ static void fail(NSString *message) { throw std::runtime_error(message.UTF8Strin
     }
 }
 - (void)pump {
-    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.01]];
+    // Returns as soon as one source (RFCOMM data/close) is handled; the short
+    // limit only bounds timeout and cancellation checks.
+    if(![[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.05]])
+        [NSThread sleepForTimeInterval:0.01];
 }
 - (void)rfcommChannelOpenComplete:(IOBluetoothRFCOMMChannel *)channel status:(IOReturn)status {
     if(channel!=_channel) return;
@@ -199,29 +203,21 @@ static void fail(NSString *message) { throw std::runtime_error(message.UTF8Strin
 }
 - (wf::Bytes)request:(const wf::Bytes&)command reply:(int)reply inquiry:(int)inquiry table:(int)table {
     if(_cancelled.load()) fail(@"OpenSound is shutting down.");
-    if(!self.connected) fail(_ioError?:@"Not connected.");
+    if(!self.connected) failLink(_ioError?:@"Not connected.");
     if(table==2 && command.size()>=2 && command[0]==0x38 && command[1]==1) _sourceSwitchResult=-1;
     if(table==1) [self invalidateRead:command];
     auto frame=_transaction.begin(command,reply<0?std::nullopt:std::optional<uint8_t>((uint8_t)reply),
         inquiry<0?std::nullopt:std::optional<uint8_t>((uint8_t)inquiry),nowMs(),4000,table==2?0x0e:wf::kData);
-    if(![self writeFrame:frame]) fail(_ioError);
+    if(![self writeFrame:frame]) failLink(_ioError);
     while(_transaction.status()==wf::TransactionStatus::Waiting && self.connected && !_cancelled.load()) {
         [self pump]; _transaction.expire(nowMs());
     }
     if(_cancelled.load()) fail(@"OpenSound is shutting down.");
-    if(!self.connected) fail(_ioError?:@"Disconnected.");
+    if(!self.connected) failLink(_ioError?:@"Disconnected.");
     if(_transaction.status()!=wf::TransactionStatus::Complete) {
         // A timed-out GET is unknown, not the last cached successful value.
-        if(command.size()>=2) {
-            if(command[0]==0x66) _ambient.reset();
-            if(command[0]==0x56) _eq.reset();
-            if(command[0]==0x22 || (!_isV2 && command[0]==0x10)) {
-                if(command[1]==0) _battery.single.reset();
-                if(command[1]==1) { _battery.left.reset(); _battery.right.reset(); }
-                if(command[1]==2) _battery.caseBattery.reset();
-            }
-        }
-        fail([NSString stringWithFormat:@"Sony command %@ timed out.",hex(command)]);
+        [self invalidateRead:command];
+        failLink([NSString stringWithFormat:@"Sony command %@ timed out.",hex(command)]);
     }
     auto response=_transaction.response().value_or(wf::Bytes{});
     // An invalid matching RET must not reuse a cached notification or old

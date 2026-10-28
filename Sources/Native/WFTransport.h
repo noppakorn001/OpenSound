@@ -1,6 +1,13 @@
 #import <Foundation/Foundation.h>
 #import <IOBluetooth/IOBluetooth.h>
 #include "../Core/WFProtocol.h"
+#include <stdexcept>
+
+namespace wf {
+// The control link itself failed (timeout, closed channel, write error), as
+// opposed to a malformed or unsupported reply. Callers branch on this type.
+struct LinkError : std::runtime_error { using std::runtime_error::runtime_error; };
+}
 
 // Called exclusively on one thread with an active NSRunLoop.
 @interface WFTransport : NSObject <IOBluetoothRFCOMMChannelDelegate>

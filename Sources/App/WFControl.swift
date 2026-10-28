@@ -44,9 +44,9 @@ struct HeadphoneSetting: Identifiable {
 @MainActor
 final class HeadphoneModel: ObservableObject {
     let bridge = WFBridge()
-    @Published var devices: [PairedHeadphones] = []
-    @Published var selectedAddress = ""
-    @Published var state: [AnyHashable: Any] = [:]
+    @Published var devices: [PairedHeadphones] = [] { didSet { updateProductImage() } }
+    @Published var selectedAddress = "" { didSet { updateProductImage() } }
+    @Published var state: [AnyHashable: Any] = [:] { didSet { updateDerived() } }
     @Published var busy = false
     @Published var message = "Connect your paired Sony headphones to get started."
     @Published var failed = false
@@ -64,6 +64,13 @@ final class HeadphoneModel: ObservableObject {
     private var stopping = false
     private var workspaceObservers: [NSObjectProtocol] = []
     private var lastPoll = Date.distantPast
+    private var polling = false
+    private(set) var settings: [HeadphoneSetting] = []
+    private(set) var touchSettings: [HeadphoneSetting] = []
+    private(set) var generalSettings: [HeadphoneSetting] = []
+    private(set) var settingSections: [String] = []
+    private(set) var productImage: NSImage?
+    private var productImageKey = ""
     private var timer: Timer?
     var connected: Bool { state["connected"] as? Bool ?? false }
     var mode: String { state["mode"] as? String ?? "" }
@@ -78,24 +85,43 @@ final class HeadphoneModel: ObservableObject {
     var ambientReason: String { state["ambientReason"] as? String ?? "Waiting for headphone status." }
     var deviceName: String { connected ? state["name"] as? String ?? "Sony headphones" : devices.first(where: { $0.id == selectedAddress })?.name ?? "OpenSound" }
     var isEarbuds: Bool { deviceName.hasPrefix("WF-") || deviceName.contains("LinkBuds") }
-    var settings: [HeadphoneSetting] { (state["settings"] as? [[String: Any]] ?? []).compactMap(HeadphoneSetting.init) }
-    var touchSettings: [HeadphoneSetting] { settings.filter { $0.id.hasPrefix("assignment") }.sorted { $0.id < $1.id } }
     var touchDirty: Bool {
         touchSettings.contains { setting in
             guard let draft = touchDraft[setting.id] else { return false }
             return draft != setting.value
         }
     }
-    var settingSections: [String] { Array(Set(settings.filter { !$0.id.hasPrefix("assignment") }.map(\.section))).sorted() }
-    var productImageURL: URL? {
-        guard let images = Bundle.main.urls(forResourcesWithExtension: "png", subdirectory: "Devices") else { return nil }
+    private func updateDerived() {
+        settings = (state["settings"] as? [[String: Any]] ?? []).compactMap(HeadphoneSetting.init)
+        touchSettings = settings.filter { $0.id.hasPrefix("assignment") }.sorted { $0.id < $1.id }
+        generalSettings = settings.filter { !$0.id.hasPrefix("assignment") }
+        settingSections = Array(Set(generalSettings.map(\.section))).sorted()
+        updateProductImage()
+    }
+    private func updateProductImage() {
         let reportedModel = settings.first(where: { $0.id == "modelName" })?.displayValue ?? ""
+        let key = reportedModel + "|" + deviceName
+        guard key != productImageKey else { return }
+        productImageKey = key
+        productImage = nil
+        guard let images = Bundle.main.urls(forResourcesWithExtension: "png", subdirectory: "Devices") else { return }
         let names = [reportedModel, deviceName].map {
             $0.lowercased().replacingOccurrences(of: " ", with: "-").replacingOccurrences(of: "_", with: "-")
         }
-        return images.sorted(by: { $0.lastPathComponent < $1.lastPathComponent }).first { url in
+        let match = images.sorted(by: { $0.lastPathComponent < $1.lastPathComponent }).first { url in
             let model = url.deletingPathExtension().lastPathComponent
             return names.contains(where: { $0 == model || $0.contains(model + "-") || $0.hasSuffix("-" + model) })
+        }
+        productImage = match.flatMap { NSImage(contentsOf: $0) }
+    }
+    /// Publishes only real changes so unchanged polls do not re-render the UI.
+    private func apply(_ snapshot: [AnyHashable: Any]) {
+        if !(snapshot as NSDictionary).isEqual(to: state) { state = snapshot }
+        if !dirty {
+            if let bands = snapshot["bands"] as? [Int], bands.count == 5, draftBands != bands.map(Double.init) {
+                draftBands = bands.map(Double.init)
+            }
+            if let bass = snapshot["clearBass"] as? Int, draftBass != Double(bass) { draftBass = Double(bass) }
         }
     }
 
@@ -116,20 +142,20 @@ final class HeadphoneModel: ObservableObject {
                 self.sleeping = false; self.retryPolicy.wake(now: Date()); self.scan()
             }
         })
-        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
-            Task { @MainActor in
-                self?.tick()
-            }
+        let timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
+            MainActor.assumeIsolated { self?.tick() }
         }
+        timer.tolerance = 0.5
+        self.timer = timer
     }
     private func tick() {
         guard !stopping, !sleeping, !busy else { return }
         let now = Date()
         if connected {
             // Draft EQ must not stop connection monitoring in the Menu Bar.
-            guard now.timeIntervalSince(lastPoll) >= 5 else { return }
+            guard !polling, now.timeIntervalSince(lastPoll) >= 5 else { return }
             lastPoll = now
-            perform("Refreshing…", announce: false) { bridge.refresh($0) }
+            poll()
         } else if let address = retryPolicy.consumeAttempt(now: now) {
             guard devices.contains(where: { $0.id == address }) else {
                 scan(); retryPolicy.disconnected(now: now)
@@ -138,6 +164,24 @@ final class HeadphoneModel: ObservableObject {
             }
             selectedAddress = address; reconnecting = true
             perform("Reconnecting…") { bridge.connectAddress(address, completion: $0) }
+        }
+    }
+    /// Background status read. It does not set `busy`, so controls stay usable;
+    /// user actions queue behind it on the Bluetooth worker.
+    private func poll() {
+        polling = true
+        bridge.pollStatus { [weak self] snapshot, error in
+            MainActor.assumeIsolated {
+                guard let self else { return }
+                self.polling = false
+                guard !self.stopping, !self.sleeping else { return }
+                if let snapshot { self.apply(snapshot) }
+                if let error { self.message = error; self.failed = true }
+                if !self.connected {
+                    self.touchDraft.removeAll(); self.touchMessage = ""
+                    self.retryPolicy.disconnected(now: Date())
+                }
+            }
         }
     }
     private func prepareForSleep() {
@@ -185,15 +229,7 @@ final class HeadphoneModel: ObservableObject {
             guard let self else { return }
             guard !self.stopping else { return }
             self.busy = false; self.reconnecting = false
-            if let snapshot {
-                self.state = snapshot
-                if !self.dirty {
-                    if let bands = snapshot["bands"] as? [Int], bands.count == 5 {
-                        self.draftBands = bands.map(Double.init)
-                    }
-                    if let bass = snapshot["clearBass"] as? Int { self.draftBass = Double(bass) }
-                }
-            }
+            if let snapshot { self.apply(snapshot) }
             if let error { self.message = error; self.failed = true }
             else if announce { self.message = self.connected ? "Updated on your headphones." : "Disconnected."; self.failed = false }
             if !self.connected { self.touchDraft.removeAll(); self.touchMessage = "" }
@@ -292,7 +328,7 @@ struct PhoneView: View {
             ScrollView {
                 VStack(spacing: 0) {
                     VStack(spacing: 9) {
-                        if let url = model.productImageURL, let image = NSImage(contentsOf: url) {
+                        if let image = model.productImage {
                             Image(nsImage: image).resizable().scaledToFit()
                                 .frame(height: 117).padding(.top, 16)
                                 .accessibilityLabel("\(model.deviceName) product image")
@@ -402,7 +438,7 @@ struct PhoneView: View {
                             ForEach(model.settingSections, id: \.self) { section in
                                 VStack(alignment: .leading, spacing: 15) {
                                     Text(section).font(.system(size: 17, weight: .semibold))
-                                    ForEach(model.settings.filter { $0.section == section && !$0.id.hasPrefix("assignment") }) { setting in
+                                    ForEach(model.generalSettings.filter { $0.section == section }) { setting in
                                         settingRow(setting)
                                     }
                                 }.padding(16).background(cardColor, in: RoundedRectangle(cornerRadius: 7))

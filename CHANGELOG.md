@@ -1,7 +1,11 @@
 # Changelog
 
-## Unreleased
+## 0.4.2
 
+- Poll only battery, ambient and EQ every 5 seconds without marking the interface busy; settings are re-read on demand.
+- Publish device state only when it changes and cache derived settings and the product image to avoid redundant re-renders.
+- Replace the 0.1 s worker wake-up loop with an event-driven run loop and make transport waits return on data arrival.
+- Classify lost-link errors by type instead of matching message text, and make the worker stop flag atomic.
 - Add a complete fork/contribution workflow, developer source map, support and community policies.
 - Clarify MIT licensing for code and the owner-generated cow logo, and the unconfirmed rights of Sony product renders.
 - Avoid stale Swift module-cache paths after moving a checkout.
